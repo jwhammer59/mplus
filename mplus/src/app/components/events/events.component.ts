@@ -1,7 +1,6 @@
 import { MatPaginator } from '@angular/material/paginator';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatSort } from '@angular/material/sort';
 
 import { Event } from '../../common/Event';
