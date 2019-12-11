@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,11 +23,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { EventsComponent } from './components/events/events.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { EventsComponent } from './components/events/events.component';
+import { VolunteersComponent } from './components/volunteers/volunteers.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +41,16 @@ import { MatSortModule } from '@angular/material/sort';
     ContactUsComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    EventsComponent
+    EventsComponent,
+    VolunteersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -48,7 +58,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatListModule,
     MatGridListModule,
+    MatFormFieldModule,
     MatCardModule,
+    MatInputModule,
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,

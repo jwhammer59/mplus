@@ -1,1 +1,10 @@
 <p>home works!</p>
+<div>
+  <mat-card *ngFor="let event of events">
+    <mat-card-title>{{ event.evtType }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ event.evtDate }}</p>
+      <p>{{ event.evtIsFull }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

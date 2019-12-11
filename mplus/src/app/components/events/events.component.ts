@@ -1,30 +1,45 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { EventsDataSource, EventsItem } from './events-datasource';
+
+import { Event } from '../../common/Event';
+import { EventsService } from './../../services/events.service';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
-export class EventsComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<EventsItem>;
-  dataSource: EventsDataSource;
+export class EventsComponent implements OnInit, AfterViewInit{
+  events: Event[];
+  event: Event;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'evtType', 'evtDate', 'evtIsFull'];
+  dataSource = new MatTableDataSource([]);
+  // sort: MatSort;
+
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+
+  constructor(private eventsService: EventsService) {}
 
   ngOnInit() {
-    this.dataSource = new EventsDataSource();
+    this.eventsService.getEvents()
+      .subscribe(events => {
+        this.dataSource.data = events;
+      }); 
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
   }
+
+  doFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
 }
