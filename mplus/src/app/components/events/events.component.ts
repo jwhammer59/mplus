@@ -1,5 +1,5 @@
-import { MatPaginator } from '@angular/material/paginator';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
@@ -14,13 +14,13 @@ import { EventsService } from './../../services/events.service';
 export class EventsComponent implements OnInit, AfterViewInit{
   events: Event[];
   event: Event;
-
-  displayedColumns = ['id', 'evtType', 'evtDate', 'evtIsFull'];
-  dataSource = new MatTableDataSource([]);
-  // sort: MatSort;
-
+  
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+
+    /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['evtType', 'evtDate', 'evtIsFull'];
+  dataSource = new MatTableDataSource([]);
 
   constructor(private eventsService: EventsService) {}
 
@@ -39,6 +39,4 @@ export class EventsComponent implements OnInit, AfterViewInit{
   doFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
 }

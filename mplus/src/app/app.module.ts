@@ -31,6 +31,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { EventsComponent } from './components/events/events.component';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
+import { EventComponent } from './components/event/event.component';
+import { VolunteerComponent } from './components/volunteer/volunteer.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { VolunteersComponent } from './components/volunteers/volunteers.componen
     PageNotFoundComponent,
     DashboardComponent,
     EventsComponent,
-    VolunteersComponent
+    VolunteersComponent,
+    EventComponent,
+    VolunteerComponent
   ],
   imports: [
     BrowserModule,
