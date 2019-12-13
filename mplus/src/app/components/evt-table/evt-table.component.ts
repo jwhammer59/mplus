@@ -3,15 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
-import { Event } from '../../common/Event';
-import { EventsService } from './../../services/events.service';
+import { Event } from '../../models/Event';
+import { EventsService } from '../../services/events.service';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  selector: 'app-evt-table',
+  templateUrl: './evt-table.component.html',
+  styleUrls: ['./evt-table.component.css']
 })
-export class EventsComponent implements OnInit, AfterViewInit{
+export class EvtTableComponent implements OnInit, AfterViewInit{
   events: Event[];
   event: Event;
   

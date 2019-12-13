@@ -3,15 +3,15 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { Volunteer } from './../../common/Volunteer';
-import { VolunteersService } from './../../services/volunteers.service';
+import { Volunteer } from '../../models/Volunteer';
+import { VolunteersService } from '../../services/volunteers.service';
 
 @Component({
-  selector: 'app-volunteers',
-  templateUrl: './volunteers.component.html',
-  styleUrls: ['./volunteers.component.css']
+  selector: 'app-vol-table',
+  templateUrl: './vol-table.component.html',
+  styleUrls: ['./vol-table.component.css']
 })
-export class VolunteersComponent implements OnInit, AfterViewInit {
+export class VolTableComponent implements OnInit, AfterViewInit {
   volunteers: Volunteer[];
   volunteer: Volunteer;
 

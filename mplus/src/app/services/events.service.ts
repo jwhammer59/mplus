@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Event } from '../common/Event';
+import { Event } from '../models/Event';
 
 @Injectable({
   providedIn: 'root'
