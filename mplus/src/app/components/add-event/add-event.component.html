@@ -1,0 +1,49 @@
+<div class="grid-container">
+  <div><h1 class="mat-h1">Add Event</h1></div>
+</div>
+
+<form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="layout">
+      <mat-form-field fxFlexFill>
+        <input
+        matInput
+        type="text"
+        class="form-control"
+        name="evtType"
+        #eventType="ngModel"
+        [(ngModel)]="evtType"
+        placeholder="Event Type"
+        minlength="2"
+        required>
+      </mat-form-field>
+    </div>
+    <div class="layout">
+      <mat-form-field fxFlexFill>
+        <input
+        matInput
+        type="text"
+        class="form-control"
+        name="evtDate"
+        #eventType="ngModel"
+        [(ngModel)]="evtDate"
+        placeholder="Event Date"
+        minlength="2"
+        required>
+      </mat-form-field>
+    </div>
+    <div class="layout">
+      <section class="example-section">
+        <mat-checkbox 
+          name="evtIsFull" [(ngModel)]="evtIsFull">Checked</mat-checkbox>
+      </section>
+    </div>
+    <button
+      mat-button
+      type="submit"
+      value="Submit"
+      mat-stroked-button
+      >Submit</button>
+      
+  </div>
+</form>

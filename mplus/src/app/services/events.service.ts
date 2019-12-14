@@ -11,8 +11,9 @@ import { Event } from '../models/Event';
 })
 export class EventsService {
   private eventsCollection: AngularFirestoreCollection<Event>;
+  private eventDoc: AngularFirestoreDocument<Event>;
   private events: Observable<Event[]>;
-
+  private event: Observable<Event>;
 
   constructor(private afs: AngularFirestore) {
     this.eventsCollection = afs.collection<Event>('events');
@@ -29,5 +30,27 @@ export class EventsService {
         }))
       );
       return this.events;
+   }
+
+   getEvent(id: string): Observable<Event> {
+    this.eventDoc = this.afs.doc<Event>(`events/${id}`);
+    this.event = this.eventDoc
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
+          if(actions.payload.exists === false) {
+            return null;
+          } else {
+            const data = actions.payload.data() as Event;
+            data.id = actions.payload.id;
+            return data; 
+          }
+        })); 
+        return this.event;
+      
+   }
+
+   addEvent(event: Event) {
+    this.eventsCollection.add(event);
    }
 }

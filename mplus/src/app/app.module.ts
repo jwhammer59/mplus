@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,6 +23,8 @@ import { EvtTableComponent } from './components/evt-table/evt-table.component';
 import { VolTableComponent } from './components/vol-table/vol-table.component';
 import { EventComponent } from './components/event/event.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
+import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,16 @@ import { VolunteerComponent } from './components/volunteer/volunteer.component';
     EvtTableComponent,
     VolTableComponent,
     EventComponent,
-    VolunteerComponent
+    VolunteerComponent,
+    EditEventComponent,
+    AddEventComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     MaterialModule,
