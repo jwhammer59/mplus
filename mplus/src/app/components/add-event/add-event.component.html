@@ -12,7 +12,7 @@
         class="form-control"
         name="evtType"
         #eventType="ngModel"
-        [(ngModel)]="evtType"
+        [(ngModel)]="event.evtType"
         placeholder="Event Type"
         minlength="2"
         required>
@@ -26,7 +26,7 @@
         class="form-control"
         name="evtDate"
         #eventType="ngModel"
-        [(ngModel)]="evtDate"
+        [(ngModel)]="event.evtDate"
         placeholder="Event Date"
         minlength="2"
         required>
@@ -35,7 +35,7 @@
     <div class="layout">
       <section class="example-section">
         <mat-checkbox 
-          name="evtIsFull" [(ngModel)]="evtIsFull">Checked</mat-checkbox>
+          name="evtIsFull" [(ngModel)]="event.evtIsFull">Event is Full</mat-checkbox>
       </section>
     </div>
     <button

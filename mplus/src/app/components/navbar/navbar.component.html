@@ -7,9 +7,16 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/">Home</a>
       <a mat-list-item routerLink="/dashboard">Dashboard</a>
-      <a mat-list-item routerLink="/event">Events</a>    
-      <a mat-list-item routerLink="/add-event">Add Events</a>    
-      <a mat-list-item routerLink="/volunteer">Volunteers</a>
+      <a mat-list-item [matMenuTriggerFor]="events">Events</a> 
+      <mat-menu #events="matMenu">
+        <a mat-menu-item routerLink="/event">Events List</a>    
+        <a mat-menu-item routerLink="/add-event">Add Events</a>    
+      </mat-menu>   
+      <a mat-list-item [matMenuTriggerFor]="volunteers">Volunteers</a>
+      <mat-menu #volunteers="matMenu">
+        <a mat-menu-item routerLink="/volunteer">Volunteers</a>
+        <a mat-menu-item routerLink="/add-volunteer">Add Volunteers</a>
+      </mat-menu>
       <a mat-list-item routerLink="/contact-us">Contact Us</a>
       <a mat-list-item routerLink="/about">About</a>
     </mat-nav-list>

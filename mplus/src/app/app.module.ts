@@ -25,6 +25,8 @@ import { EventComponent } from './components/event/event.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { AddVolunteerComponent } from './components/add-volunteer/add-volunteer.component';
+import { EditVolunteerComponent } from './components/edit-volunteer/edit-volunteer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     EventComponent,
     VolunteerComponent,
     EditEventComponent,
-    AddEventComponent
+    AddEventComponent,
+    AddVolunteerComponent,
+    EditVolunteerComponent
   ],
   imports: [
     BrowserModule,

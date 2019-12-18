@@ -4,4 +4,5 @@ export interface Volunteer {
   lastName: string;
   phone: string;
   email: string;
+  isAvailable: boolean;
 }
