@@ -8,7 +8,7 @@
     <!-- Id Column -->
     <ng-container matColumnDef="active">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Is Available</mat-header-cell>
-      <mat-cell mat-cell *matCellDef="let volunteer"><mat-checkbox [ngModel]="volunteer.isAvailable"></mat-checkbox></mat-cell>
+      <mat-cell mat-cell *matCellDef="let volunteer"><mat-checkbox [ngModel]="volunteer.isAvailable" [disabled]=true></mat-checkbox></mat-cell>
     </ng-container>
 
     <!-- First Name Column -->

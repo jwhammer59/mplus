@@ -15,13 +15,13 @@
     <!-- Event Date Column-->
     <ng-container matColumnDef="evtDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-      <mat-cell *matCellDef="let event">{{ event.evtDate }}</mat-cell>
+      <mat-cell *matCellDef="let event">{{ event.evtDate.toDate() | date }}</mat-cell>
     </ng-container>
 
     <!-- Event Is Full Column-->
     <ng-container matColumnDef="evtIsFull">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Event Full</mat-header-cell>
-      <mat-cell *matCellDef="let event">{{ event.evtIsFull }}</mat-cell>
+      <mat-cell *matCellDef="let event"><mat-checkbox [(ngModel)]="event.evtIsFull" [disabled]=true></mat-checkbox></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

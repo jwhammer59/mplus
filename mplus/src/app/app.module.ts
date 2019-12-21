@@ -27,6 +27,10 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { AddVolunteerComponent } from './components/add-volunteer/add-volunteer.component';
 import { EditVolunteerComponent } from './components/edit-volunteer/edit-volunteer.component';
+import { DeleteEventComponent } from './components/dialogs/delete-event/delete-event.component';
+import { DeleteVolunteerComponent } from './components/dialogs/delete-volunteer/delete-volunteer.component';
+import { VolunteerDetailComponent } from './components/volunteer-detail/volunteer-detail.component';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { EditVolunteerComponent } from './components/edit-volunteer/edit-volunte
     EditEventComponent,
     AddEventComponent,
     AddVolunteerComponent,
-    EditVolunteerComponent
+    EditVolunteerComponent,
+    DeleteEventComponent,
+    DeleteVolunteerComponent,
+    EventDetailComponent,
+    VolunteerDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +66,7 @@ import { EditVolunteerComponent } from './components/edit-volunteer/edit-volunte
     FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteVolunteerComponent]
 })
 export class AppModule { }

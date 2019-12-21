@@ -13,7 +13,33 @@ export class AddEventComponent implements OnInit {
   event: Event = {
     evtType: '',
     evtDate: '',
-    evtIsFull: false
+    evtIsFull: false,
+    evtCantor: '',
+    evtEMoHC1: '',
+    evtEMoHC2: '',
+    evtEMoHC3: '',
+    evtEMoHC4: '',
+    evtEMoHC5: '',
+    evtEMoHC6: '',
+    evtEMoHC7: '',
+    evtGifts: '',
+    evtGiftsChild: '',
+    evtLector1: '',
+    evtLector2: '',
+    evtOther: '',
+    evtRosary1: '',
+    evtRosary2: '',
+    evtServer1: '',
+    evtServer2: '',
+    evtServer3: '',
+    evtTech1: '',
+    evtTech2: '',
+    evtUsher1: '',
+    evtUsher2: '',
+    evtUsher3: '',
+    evtUsher4: '',
+    evtUsher5: '',
+    evtUsher6: ''
   }
 
   @ViewChild('eventForm', {static: false}) form: any;

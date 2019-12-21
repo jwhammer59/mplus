@@ -1,0 +1,25 @@
+<div class="header">
+  <h2>Event Detail</h2>
+</div>
+<div fxLayout fxLayoutAlign="center center">
+  <div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ event.evtType }}</mat-card-title>
+      <mat-card-subtitle>{{ event.evtDate }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content align="center">
+      <p>Event Type: {{ event.evtType }}</p>
+      <p>Event Date: {{ event.evtDate }}</p>
+      <p>Event is Full?: {{ event.evtIsFull }}</p>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-stroked-button routerLink="/edit-event/{{id}}" matRipple color="accent" align="start">Edit</button>
+      <button (click)="onDeleteClicked()" mat-stroked-button matRipple color="warn" align="end">Delete</button>
+    </mat-card-actions>
+    <mat-card-footer align="end">
+      <p>Event Type: {{ event.evtType }}</p>
+    </mat-card-footer>
+  </mat-card>
+  </div>
+</div>

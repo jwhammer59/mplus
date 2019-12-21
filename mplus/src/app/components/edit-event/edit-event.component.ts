@@ -11,7 +11,37 @@ import { Event } from '../../models/Event';
 })
 export class EditEventComponent implements OnInit {
   id: string;
-  event: Event;
+  event: Event = {
+    evtType: '',
+    evtDate: '',
+    evtIsFull: false,
+    evtCantor: '',
+    evtEMoHC1: '',
+    evtEMoHC2: '',
+    evtEMoHC3: '',
+    evtEMoHC4: '',
+    evtEMoHC5: '',
+    evtEMoHC6: '',
+    evtEMoHC7: '',
+    evtGifts: '',
+    evtGiftsChild: '',
+    evtLector1: '',
+    evtLector2: '',
+    evtOther: '',
+    evtRosary1: '',
+    evtRosary2: '',
+    evtServer1: '',
+    evtServer2: '',
+    evtServer3: '',
+    evtTech1: '',
+    evtTech2: '',
+    evtUsher1: '',
+    evtUsher2: '',
+    evtUsher3: '',
+    evtUsher4: '',
+    evtUsher5: '',
+    evtUsher6: ''
+  };
 
   constructor(
     private eventsService: EventsService,
@@ -29,6 +59,12 @@ export class EditEventComponent implements OnInit {
       }
       this.event = event
     })
+  }
+
+  onSubmit({value}: {value: Event}) {
+    // this.eventsService.addEvent(value);
+    // this.router.navigate(['/event']);
+    console.log(value);
   }
 
 }

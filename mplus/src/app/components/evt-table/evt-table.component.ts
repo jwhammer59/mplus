@@ -19,7 +19,7 @@ export class EvtTableComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
     /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['evtType', 'evtDate', 'evtIsFull'];
+  displayedColumns = ['evtDate', 'evtType', 'evtIsFull'];
   dataSource = new MatTableDataSource([]);
 
   constructor(private eventsService: EventsService) {}

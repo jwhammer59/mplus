@@ -46,11 +46,20 @@ export class EventsService {
             return data; 
           }
         })); 
-        return this.event;
-      
+        return this.event;   
    }
 
    addEvent(event: Event) {
     this.eventsCollection.add(event);
    }
+
+   updateEvent(event: Event) {
+    this.eventDoc = this.afs.doc(`events/${event.id}`);
+    this.eventDoc.update(event);
+  }
+  
+  deleteEvent(event: Event) {
+    this.eventDoc = this.afs.doc(`events/${event.id}`);
+    this.eventDoc.delete();
+  }
 }

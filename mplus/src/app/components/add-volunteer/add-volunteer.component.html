@@ -1,1 +1,77 @@
-<p>add-volunteer works!</p>
+<div class="grid-container">
+    <div><h1 class="mat-h1">Add Volunteer</h1></div>
+  </div>
+  
+  <form #volunteerForm="ngForm" (ngSubmit)="onSubmit(volunteerForm)">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="layout">
+        <mat-form-field fxFlexFill>
+          <input
+          matInput
+          type="text"
+          class="form-control"
+          name="firstName"
+          #volFirstName="ngModel"
+          [(ngModel)]="volunteer.firstName"
+          placeholder="First Name"
+          minlength="2"
+          required>
+        </mat-form-field>
+      </div>
+      <div class="layout">
+        <mat-form-field fxFlexFill>
+          <input
+          matInput
+          type="text"
+          class="form-control"
+          name="lastName"
+          #volLastName="ngModel"
+          [(ngModel)]="volunteer.lastName"
+          placeholder="Last Name"
+          minlength="2"
+          required>
+        </mat-form-field>
+      </div>
+      <div class="layout">
+        <mat-form-field fxFlexFill>
+          <input
+          matInput
+          type="text"
+          class="form-control"
+          name="email"
+          #volEmail="ngModel"
+          [(ngModel)]="volunteer.email"
+          placeholder="Email"
+          minlength="2"
+          required>
+          </mat-form-field>
+      </div>  
+      <div class="layout">
+        <mat-form-field fxFlexFill>
+          <input
+          matInput
+          type="text"
+          class="form-control"
+          name="phone"
+          #volPhone="ngModel"
+          [(ngModel)]="volunteer.phone"
+          placeholder="Phone"
+          minlength="2"
+          required>
+        </mat-form-field>
+      </div>
+      <div class="layout">
+        <section class="example-section">
+          <mat-checkbox 
+            name="isAvailable" [(ngModel)]="volunteer.isAvailable">Volunteer is Availalbe</mat-checkbox>
+        </section>
+      </div>
+      <button
+        mat-button
+        type="submit"
+        value="Submit"
+        mat-stroked-button
+        >Submit</button>
+        
+    </div>
+  </form>

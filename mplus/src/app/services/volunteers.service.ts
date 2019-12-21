@@ -1,9 +1,9 @@
-
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { Volunteer } from '../models/Volunteer';
 
 @Injectable({
@@ -53,13 +53,13 @@ export class VolunteersService {
      this.volunteersCollection.add(volunteer);
    }
 
+   updateVolunteer(volunteer: Volunteer) {
+     this.volunteerDoc = this.afs.doc(`volunteers/${volunteer.id}`);
+     this.volunteerDoc.update(volunteer);
+   }
+
    deleteVolunteer(volunteer: Volunteer) {
      this.volunteerDoc = this.afs.doc(`volunteers/${volunteer.id}`);
      this.volunteerDoc.delete();
-   }
-
-   updateVolunteer(volunteer: Volunteer) {
-     this.volunteerDoc = this.afs.doc(`volunteer/${volunteer.id}`);
-     this.volunteerDoc.update(volunteer);
    }
 }
