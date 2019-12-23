@@ -1,7 +1,14 @@
 <div class="grid-container">
   <div fxLayout="row" fxLayoutAlign="space-between">
     <div><h3 class="mat-h1">Events</h3></div>
-    <div><button mat-stroked-button color="primary">Add Event</button></div>
+    <div>
+      <button
+        mat-stroked-button
+        routerLink="/add-event"
+        color="primary">
+        Add Event
+      </button>
+    </div>
   </div>
   <app-evt-table></app-evt-table>
 </div>

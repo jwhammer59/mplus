@@ -1,7 +1,14 @@
 <div class="grid-container">
   <div fxLayout="row" fxLayoutAlign="space-between">
     <div><h3 class="mat-h1">Volunteers</h3></div>
-    <div><button mat-stroked-button color="primary">Add Volunteer</button></div>
+    <div>
+      <button
+        mat-stroked-button
+        routerLink="/add-volunteer"
+        color="primary">
+        Add Volunteer
+      </button>
+    </div>
   </div>
     <app-vol-table></app-vol-table>
 </div>

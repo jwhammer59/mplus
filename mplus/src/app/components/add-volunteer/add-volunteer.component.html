@@ -61,10 +61,72 @@
         </mat-form-field>
       </div>
       <div class="layout">
-        <section class="example-section">
-          <mat-checkbox 
-            name="isAvailable" [(ngModel)]="volunteer.isAvailable">Volunteer is Availalbe</mat-checkbox>
-        </section>
+        <table>
+          <tr>
+            <td>
+              <section fxLayout fxLayoutAlign="space-between">
+                <mat-checkbox
+                  name="isAvailable" [(ngModel)]="volunteer.isAvailable">Is Available?
+                </mat-checkbox>
+
+                <mat-checkbox
+                  name="isAdmin" [(ngModel)]="volunteer.isAdmin">Is Admin?
+                </mat-checkbox>
+
+                <mat-checkbox
+                  name="isEMoHC" [(ngModel)]="volunteer.isEMoHC">Is EMoHC?
+                </mat-checkbox>
+    
+                <mat-checkbox
+                  name="isLector" [(ngModel)]="volunteer.isLector">Is Lector?
+                </mat-checkbox>
+              </section>
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <section fxLayout fxLayoutAlign="space-between">
+                <mat-checkbox 
+                  name="isCantor" [(ngModel)]="volunteer.isCantor">Is Cantor?
+                </mat-checkbox>
+
+                <mat-checkbox 
+                  name="isUsher" [(ngModel)]="volunteer.isUsher">Is Usher?
+                </mat-checkbox>
+
+                <mat-checkbox 
+                  name="isServer" [(ngModel)]="volunteer.isServer">Is Server?
+                </mat-checkbox>
+
+                <mat-checkbox 
+                  name="isTech" [(ngModel)]="volunteer.isTech">Is Technology?
+                </mat-checkbox>
+              </section>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <section fxLayout fxLayoutAlign="space-between">
+                <mat-checkbox 
+                  name="isGifts" [(ngModel)]="volunteer.isGifts">Is Gifts?
+                </mat-checkbox>
+
+                <mat-checkbox 
+                  name="isGiftsChild" [(ngModel)]="volunteer.isGiftsChild">Is Child Gifts?
+                </mat-checkbox>
+
+                <mat-checkbox 
+                  name="isRosary" [(ngModel)]="volunteer.isRosary">Is Rosary?
+                </mat-checkbox>
+
+                <mat-checkbox 
+                  name="isOther" [(ngModel)]="volunteer.isOther">Is Other?
+                </mat-checkbox>
+              </section>
+            </td>
+          </tr>
+        </table>
       </div>
       <button
         mat-button

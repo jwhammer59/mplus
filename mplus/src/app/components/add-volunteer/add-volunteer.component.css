@@ -5,3 +5,12 @@
 .layout {
   width: 60%;
 }
+
+table { 
+  width: 100%
+}
+
+section {
+  margin: 1.0rem 0;
+}
+

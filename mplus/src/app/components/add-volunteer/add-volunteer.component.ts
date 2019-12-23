@@ -16,7 +16,18 @@ export class AddVolunteerComponent implements OnInit {
     lastName: '',
     phone: '',
     email: '',
-    isAvailable: false
+    isAvailable: false,
+    isAdmin: false,
+    isEMoHC: false,
+    isCantor: false,
+    isLector: false,
+    isGifts: false,
+    isGiftsChild: false,
+    isOther: false,
+    isRosary: false,
+    isServer: false,
+    isTech: false,
+    isUsher: false
   }
 
   constructor(
