@@ -3,5 +3,13 @@
 }
 
 .layout {
-  width: 60%;
+  width: 80%;
+}
+
+table {
+  width: 100%;
+}
+
+button {
+  margin: 1.5rem 0;
 }

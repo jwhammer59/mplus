@@ -67,6 +67,6 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteVolunteerComponent]
+  entryComponents: [DeleteVolunteerComponent, DeleteEventComponent]
 })
 export class AppModule { }

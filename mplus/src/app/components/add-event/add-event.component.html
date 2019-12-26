@@ -6,7 +6,7 @@
   <div fxLayout="column" fxLayoutAlign="center center">
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <input
@@ -37,7 +37,7 @@
                 <mat-option value="Sunday - Late">Sunday - Late</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEType.hasError('required')">Please choose an event type.</mat-error>
-              <mat-hint>Please choose event type.</mat-hint>
+              <mat-hint>Please choose an event type.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -55,7 +55,7 @@
                 <mat-option value="false">False</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEIsFull.hasError('required')">Please choose if Event is Full</mat-error>
-              <mat-hint>Please choose event status.</mat-hint>
+              <mat-hint>Please choose an event status.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -63,7 +63,7 @@
     </div>
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>Cantor</mat-label>
@@ -80,7 +80,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventECantor.hasError('required')">Please choose a Cantor</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose a Cantor.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -99,7 +99,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventELector1.hasError('required')">Please choose a lector.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose a Lector 1.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -118,7 +118,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventELector2.hasError('required')">Please choose a lector.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose a Lector 2.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -127,7 +127,7 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>EMoHC 1</mat-label>
@@ -144,7 +144,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC1.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 1.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -163,7 +163,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC2.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 2.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -182,7 +182,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC3.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 3.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -191,7 +191,7 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>EMoHC 4</mat-label>
@@ -208,7 +208,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC4.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 4.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -227,7 +227,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC5.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 5.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -246,7 +246,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC6.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 6.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -255,7 +255,7 @@
 
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>EMoHC 7</mat-label>
@@ -272,7 +272,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEEMoHC7.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose an EMoHC 7.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -291,7 +291,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEGifts.hasError('required')">Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose a Gift Bearer.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -310,7 +310,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventEGiftsChild.hasError('required')">Please choose for Child Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choosea Child Gift Bearer.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -319,24 +319,24 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>Server 1</mat-label>
               <mat-select
                 class="form-control"
                 type="text"
-                name="evtEMoHC7"
-                #eventEEMoHC7="ngModel"
-                [(ngModel)]="event.evtEMoHC7"
+                name="evtServer1"
+                #eventEServer1="ngModel"
+                [(ngModel)]="event.evtServer1"
                 required>
                 <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
                 <mat-option value="Deb Hammer">Deb Hammer</mat-option>
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEEMoHC7.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEServer1.hasError('required')">Please choose a server</mat-error>
+              <mat-hint>Please choose a Server 1.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -345,17 +345,17 @@
               <mat-select
                 class="form-control"
                 type="text"
-                name="evtGifts"
-                #eventEGifts="ngModel"
-                [(ngModel)]="event.evtGifts"
+                name="evtServer2"
+                #eventEServer2="ngModel"
+                [(ngModel)]="event.evtServer2"
                 required>
                 <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
                 <mat-option value="Deb Hammer">Deb Hammer</mat-option>
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEGifts.hasError('required')">Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEServer2.hasError('required')">Please choose a server.</mat-error>
+              <mat-hint>Please choose a Server 2.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -364,17 +364,17 @@
               <mat-select
                 class="form-control"
                 type="text"
-                name="evtGiftsChild"
-                #eventEGiftsChild="ngModel"
-                [(ngModel)]="event.evtGiftsChild"
+                name="evtServer3"
+                #eventEServer3="ngModel"
+                [(ngModel)]="event.evtServer3"
                 required>
                 <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
                 <mat-option value="Deb Hammer">Deb Hammer</mat-option>
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEGiftsChild.hasError('required')">Please choose for Child Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEServer3.hasError('required')">Please choose a server.</mat-error>
+              <mat-hint>Please choose a Server 3.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -383,7 +383,7 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>Usher 1</mat-label>
@@ -399,8 +399,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEUsher1.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEUsher1.hasError('required')">Please choose an usher</mat-error>
+              <mat-hint>Please choose an Usher 1.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -418,8 +418,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEUsher2.hasError('required')">Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEUsher2.hasError('required')">Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 2.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -437,8 +437,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEUsher3.hasError('required')">Please choose for Child Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEUsher3.hasError('required')">Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 3.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -447,7 +447,7 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>Usher 4</mat-label>
@@ -463,8 +463,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEUsher4.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEUsher4.hasError('required')">Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 4.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -482,8 +482,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEUsher5.hasError('required')">Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEUsher5.hasError('required')">Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 5.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -501,8 +501,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEUsher6.hasError('required')">Please choose for Child Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventEUsher6.hasError('required')">Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 6.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -511,7 +511,7 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-between">
           <td>
             <mat-form-field>
               <mat-label>Rosary 1</mat-label>
@@ -527,8 +527,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventERosary1.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventERosary1.hasError('required')">Please choose for the Rosary.</mat-error>
+              <mat-hint>Please choose a Rosary 1.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -546,8 +546,8 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventERosary2.hasError('required')">Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-error *ngIf="eventERosary2.hasError('required')">Please choose for the Rosary.</mat-error>
+              <mat-hint>Please choose a Rosary 2.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -556,7 +556,7 @@
               <mat-select
                 class="form-control"
                 type="text"
-                name="eOther"
+                name="evtOther"
                 #eventEOther="ngModel"
                 [(ngModel)]="event.evtOther"
                 required>
@@ -565,7 +565,7 @@
                 <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
-              <mat-error *ngIf="eventEOther.hasError('required')">Please choose for Child Gifts.</mat-error>
+              <mat-error *ngIf="eventEOther.hasError('required')">Please choose someone.</mat-error>
               <mat-hint>Please choose someone.</mat-hint>
             </mat-form-field>
           </td>
@@ -575,16 +575,16 @@
     
     <div class="layout">
       <table>
-        <tr>
+        <tr fxLayout fxLayoutAlign="space-around">
           <td>
             <mat-form-field>
               <mat-label>Technology 1</mat-label>
               <mat-select
                 class="form-control"
                 type="text"
-                name="eTech1"
+                name="evtTech1"
                 #eventETech1="ngModel"
-                [(ngModel)]="event.eTech1"
+                [(ngModel)]="event.evtTech1"
                 required>
                 <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
                 <mat-option value="Deb Hammer">Deb Hammer</mat-option>
@@ -592,7 +592,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventETech1.hasError('required')">Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose a Technology 1.</mat-hint>
             </mat-form-field>
           </td>
           <td>
@@ -601,9 +601,9 @@
               <mat-select
                 class="form-control"
                 type="text"
-                name="eTech2"
+                name="evtTech2"
                 #eventETech2="ngModel"
-                [(ngModel)]="event.eTech2"
+                [(ngModel)]="event.evtTech2"
                 required>
                 <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
                 <mat-option value="Deb Hammer">Deb Hammer</mat-option>
@@ -611,7 +611,7 @@
                 <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
               </mat-select>
               <mat-error *ngIf="eventETech2.hasError('required')">Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
+              <mat-hint>Please choose a Technology 2.</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -623,6 +623,7 @@
       type="submit"
       value="Submit"
       mat-stroked-button
+      color="primary"
       >Submit</button>
       
   </div>

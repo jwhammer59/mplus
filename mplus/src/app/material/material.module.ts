@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [],
@@ -41,7 +42,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatCheckboxModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ],
   exports: [
     MatToolbarModule,
@@ -62,7 +64,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatCheckboxModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: []

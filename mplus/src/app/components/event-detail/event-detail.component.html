@@ -5,20 +5,77 @@
   <div>
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{ event.evtType }}</mat-card-title>
-      <mat-card-subtitle>{{ event.evtDate }}</mat-card-subtitle>
+      <mat-card-title>{{ event.evtDate.toDate() | date }}</mat-card-title>
+      <mat-card-subtitle>{{ event.evtType }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content align="center">
-      <p>Event Type: {{ event.evtType }}</p>
-      <p>Event Date: {{ event.evtDate }}</p>
-      <p>Event is Full?: {{ event.evtIsFull }}</p>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cantors, Lectors & Servers
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p>Cantor: {{ event.evtCantor }}</p>
+            <p>Lector 1: {{ event.evtLector1 }}</p>
+            <p>Lector 2: {{ event.evtLector2 }}</p>
+            <p>Server 1: {{ event.evtServer1 }}</p>
+            <p>Server 2: {{ event.evtServer2 }}</p>
+            <p>Server 3: {{ event.evtServer3 }}</p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Extraordinary Ministers of Holy Communion
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p>EMoHC 1: {{ event.evtEMoHC1 }}</p>
+            <p>EMoHC 2: {{ event.evtEMoHC2 }}</p>
+            <p>EMoHC 3: {{ event.evtEMoHC3 }}</p>
+            <p>EMoHC 4: {{ event.evtEMoHC4 }}</p>
+            <p>EMoHC 5: {{ event.evtEMoHC5 }}</p>
+            <p>EMoHC 6: {{ event.evtEMoHC6 }}</p>
+            <p>EMoHC 7: {{ event.evtEMoHC7 }}</p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Ushers
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p>Usher 1: {{ event.evtUsher1 }}</p>
+            <p>Usher 2: {{ event.evtUsher2 }}</p>
+            <p>Usher 3: {{ event.evtUsher3 }}</p>
+            <p>Usher 4: {{ event.evtUsher4 }}</p>
+            <p>Usher 5: {{ event.evtUsher5 }}</p>
+            <p>Usher 6: {{ event.evtUsher6 }}</p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Rosary, Gifts, Technology & Other
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p>Gifts: {{ event.evtGifts }}</p>
+            <p>Child Gifts: {{ event.evtGiftsChild }}</p>
+            <p>Rosary 1: {{ event.evtRosary1 }}</p>
+            <p>Rosary 2: {{ event.evtRosary2 }}</p>
+            <p>Technology 1: {{ event.evtTech1 }}</p>
+            <p>Technology 2: {{ event.evtTech2 }}</p>
+            <p>Other: {{ event.evtOther }}</p>
+        </mat-expansion-panel>
+
+      </mat-accordion>
     </mat-card-content>
     <mat-card-actions align="center">
       <button mat-stroked-button routerLink="/edit-event/{{id}}" matRipple color="accent" align="start">Edit</button>
       <button (click)="onDeleteClicked()" mat-stroked-button matRipple color="warn" align="end">Delete</button>
     </mat-card-actions>
     <mat-card-footer align="end">
-      <p>Event Type: {{ event.evtType }}</p>
+      <p><mat-checkbox [disabled]=true [checked]="event.evtIsFull">Event Is Full</mat-checkbox></p>
     </mat-card-footer>
   </mat-card>
   </div>

@@ -1,4 +1,3 @@
-import { DashboardComponent } from './../components/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,11 +11,14 @@ import { EditEventComponent } from './../components/edit-event/edit-event.compon
 import { VolunteerComponent } from './../components/volunteer/volunteer.component';
 import { AddVolunteerComponent } from './../components/add-volunteer/add-volunteer.component';
 import { EditVolunteerComponent } from './../components/edit-volunteer/edit-volunteer.component';
+import { DashboardComponent } from './../components/dashboard/dashboard.component';
+import { EventDetailComponent } from './../components/event-detail/event-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'event', component: EventComponent},
+  {path: 'events', component: EventComponent},
+  {path: 'event-details/:id', component: EventDetailComponent},
   {path: 'add-event', component: AddEventComponent},
   {path: 'edit-event/:id', component: EditEventComponent},
   {path: 'volunteer', component: VolunteerComponent},

@@ -13,7 +13,37 @@ import { DeleteEventComponent } from '../dialogs/delete-event/delete-event.compo
 })
 export class EventDetailComponent implements OnInit {
   id: string;
-  event: Event;
+  event: Event = {
+    evtType: '',
+    evtDate: '',
+    evtIsFull: false,
+    evtCantor: '',
+    evtLector1: '',
+    evtLector2: '',
+    evtEMoHC1: '',
+    evtEMoHC2: '',
+    evtEMoHC3: '',
+    evtEMoHC4: '',
+    evtEMoHC5: '',
+    evtEMoHC6: '',
+    evtEMoHC7: '',
+    evtGifts: '',
+    evtGiftsChild: '',
+    evtRosary1: '',
+    evtRosary2: '',
+    evtOther: '',
+    evtUsher1: '',
+    evtUsher2: '',
+    evtUsher3: '',
+    evtUsher4: '',
+    evtUsher5: '',
+    evtUsher6: '',
+    evtTech1: '',
+    evtTech2: '',
+    evtServer1: '',
+    evtServer3: '',
+    evtServer2: '',
+  };
 
   constructor(
     private eventsService: EventsService,

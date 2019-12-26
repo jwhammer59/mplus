@@ -61,67 +61,57 @@
         </mat-form-field>
       </div>
       <div class="layout">
-        <table>
+        <table fxLayout fxLayoutAlign="space-between">
           <tr>
             <td>
-              <section fxLayout fxLayoutAlign="space-between">
+              <section fxLayout="column" fxLayoutAlign="space-between">
                 <mat-checkbox
-                  name="isAvailable" [(ngModel)]="volunteer.isAvailable">Is Available?
+                  name="isAvailable" [(ngModel)]="volunteer.isAvailable">Available
                 </mat-checkbox>
-
                 <mat-checkbox
-                  name="isAdmin" [(ngModel)]="volunteer.isAdmin">Is Admin?
+                  name="isAdmin" [(ngModel)]="volunteer.isAdmin">Admin
                 </mat-checkbox>
-
                 <mat-checkbox
-                  name="isEMoHC" [(ngModel)]="volunteer.isEMoHC">Is EMoHC?
+                  name="isEMoHC" [(ngModel)]="volunteer.isEMoHC">EMoHC
                 </mat-checkbox>
-    
                 <mat-checkbox
-                  name="isLector" [(ngModel)]="volunteer.isLector">Is Lector?
-                </mat-checkbox>
-              </section>
-
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <section fxLayout fxLayoutAlign="space-between">
-                <mat-checkbox 
-                  name="isCantor" [(ngModel)]="volunteer.isCantor">Is Cantor?
-                </mat-checkbox>
-
-                <mat-checkbox 
-                  name="isUsher" [(ngModel)]="volunteer.isUsher">Is Usher?
-                </mat-checkbox>
-
-                <mat-checkbox 
-                  name="isServer" [(ngModel)]="volunteer.isServer">Is Server?
-                </mat-checkbox>
-
-                <mat-checkbox 
-                  name="isTech" [(ngModel)]="volunteer.isTech">Is Technology?
+                  name="isLector" [(ngModel)]="volunteer.isLector">Lector
                 </mat-checkbox>
               </section>
             </td>
           </tr>
           <tr>
             <td>
-              <section fxLayout fxLayoutAlign="space-between">
+              <section fxLayout="column" fxLayoutAlign="space-between">
                 <mat-checkbox 
-                  name="isGifts" [(ngModel)]="volunteer.isGifts">Is Gifts?
+                  name="isCantor" [(ngModel)]="volunteer.isCantor">Cantor
                 </mat-checkbox>
-
                 <mat-checkbox 
-                  name="isGiftsChild" [(ngModel)]="volunteer.isGiftsChild">Is Child Gifts?
+                  name="isUsher" [(ngModel)]="volunteer.isUsher">Usher
                 </mat-checkbox>
-
                 <mat-checkbox 
-                  name="isRosary" [(ngModel)]="volunteer.isRosary">Is Rosary?
+                  name="isServer" [(ngModel)]="volunteer.isServer">Server
                 </mat-checkbox>
-
                 <mat-checkbox 
-                  name="isOther" [(ngModel)]="volunteer.isOther">Is Other?
+                  name="isTech" [(ngModel)]="volunteer.isTech">Technology
+                </mat-checkbox>
+              </section>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <section fxLayout="column" fxLayoutAlign="space-between">
+                <mat-checkbox 
+                  name="isGifts" [(ngModel)]="volunteer.isGifts">Gifts
+                </mat-checkbox>
+                <mat-checkbox 
+                  name="isGiftsChild" [(ngModel)]="volunteer.isGiftsChild">Child Gifts
+                </mat-checkbox>
+                <mat-checkbox 
+                  name="isRosary" [(ngModel)]="volunteer.isRosary">Rosary
+                </mat-checkbox>
+                <mat-checkbox 
+                  name="isOther" [(ngModel)]="volunteer.isOther">Other
                 </mat-checkbox>
               </section>
             </td>
@@ -133,7 +123,7 @@
         type="submit"
         value="Submit"
         mat-stroked-button
-        >Submit</button>
-        
+        >Submit
+      </button>  
     </div>
   </form>

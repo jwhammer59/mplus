@@ -62,7 +62,6 @@ export class EditEventComponent implements OnInit {
   }
 
   onSubmit({value}: {value: Event}) {
-    // this.eventsService.addEvent(value);
     // this.router.navigate(['/event']);
     console.log(value);
   }
