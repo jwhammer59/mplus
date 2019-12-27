@@ -29,5 +29,4 @@ export interface Event {
   evtServer1: string;
   evtServer2: string;
   evtServer3: string;
-  
 }
