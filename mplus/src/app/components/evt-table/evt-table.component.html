@@ -5,7 +5,6 @@
       </mat-form-field>
   </div>
   <mat-table [dataSource]="dataSource" matSort>
-
     <!-- Event Type Column-->
     <ng-container matColumnDef="evtType">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
@@ -29,8 +28,7 @@
   </mat-table>
 
   <mat-paginator #paginator 
-    [pageSize]="5" 
+    [pageSize]="10" 
     [pageSizeOptions]="[3, 5, 10, 25]">
   </mat-paginator>
-
 </div> 

@@ -40,7 +40,4 @@ export class EvtTableComponent implements OnInit, AfterViewInit{
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  editEvent(data) {
-    console.log(data.id);
-  }
 }

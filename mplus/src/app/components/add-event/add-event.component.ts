@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Event } from '../../models/Event';
 import { EventsService } from '../../services/events.service';
@@ -18,9 +18,10 @@ export class AddEventComponent implements OnInit {
   constructor(
     private eventsService: EventsService,
     private router: Router,
+    private fb: FormBuilder,
     private _snackBar: MatSnackBar
     ) {
-      
+
       this.eventForm = new FormGroup({
         evtType: new FormControl(''),
         evtDate: new FormControl(new Date()),

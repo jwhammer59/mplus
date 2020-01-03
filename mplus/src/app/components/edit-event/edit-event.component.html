@@ -1,51 +1,519 @@
 <div class="grid-container">
-    <div><h1 class="mat-h1">Edit Event</h1></div>
-  </div>
-  
-  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <div class="layout">
-        <mat-form-field fxFlexFill>
-          <input
-          matInput
-          type="text"
-          class="form-control"
-          name="evtType"
-          #eventType="ngModel"
-          [(ngModel)]="event.evtType"
-          placeholder="Event Type"
-          minlength="2"
-          required>
-        </mat-form-field>
-      </div>
-      <div class="layout">
-        <mat-form-field fxFlexFill>
-          <input
-            matInput
-            type="text"
-            class="form-control"
-            name="date"
-            #eventDate="ngModel"
-            [(ngModel)]="event.evtDate"
-            [matDatepicker]="picker"
-            placeholder="Choose a date"
-            required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="layout">
-        <section class="example-section">
-          <mat-checkbox 
-            name="isFull" [(ngModel)]="event.evtIsFull">Event is Full</mat-checkbox>
-        </section>
-      </div>
-      <button
-        mat-button
-        type="submit"
-        value="Submit"
-        mat-stroked-button
-        >Submit</button>
-        
+  <div><h1 class="mat-h1">Edit Event</h1></div>
+</div>
+
+<form [formGroup]="eventEditForm" (ngSubmit)="onSubmit(eventEditForm)" novalidate>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="evtDate"
+                [matDatepicker]="picker"
+                placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Event Type</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtType">
+                <mat-option value="Saturday">Saturday</mat-option>
+                <mat-option value="Sunday - Early">Sunday - Early</mat-option>
+                <mat-option value="Sunday - Late">Sunday - Late</mat-option>
+              </mat-select>
+              <mat-error>Please choose an event type.</mat-error>
+              <mat-hint>Please choose an event type.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <h5>{{ event.id }}</h5>
+            <mat-checkbox formControlName="evtIsFull">Is Full</mat-checkbox>
+          </td>
+        </tr>
+      </table>
     </div>
-  </form>
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>Cantor</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtCantor">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a Cantor</mat-error>
+              <mat-hint>Please choose a Cantor.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Lector 1</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtLector1">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a lector.</mat-error>
+              <mat-hint>Please choose a Lector 1.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Lector 2</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtLector2">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a lector.</mat-error>
+              <mat-hint>Please choose a Lector 2.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 1</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC1">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 1.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 2</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC2">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 2.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 3</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC3">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 3.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 4</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC4">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 4.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 5</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC5">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 5.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 6</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC6">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 6.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>EMoHC 7</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtEMoHC7">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose an EMoHC 7.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Gifts</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtGifts">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose for Gifts.</mat-error>
+              <mat-hint>Please choose a Gift Bearer.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Child Gifts</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtGiftsChild">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose for Child Gifts.</mat-error>
+              <mat-hint>Please choosea Child Gift Bearer.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>Server 1</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtServer1">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a server</mat-error>
+              <mat-hint>Please choose a Server 1.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Server 2</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtServer2">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a server.</mat-error>
+              <mat-hint>Please choose a Server 2.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Server 3</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtServer3">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a server.</mat-error>
+              <mat-hint>Please choose a Server 3.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>Usher 1</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtUsher1">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose an usher</mat-error>
+              <mat-hint>Please choose an Usher 1.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Usher 2</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtUsher2">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 2.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Usher 3</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtUsher3">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 3.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>Usher 4</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtUsher4">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 4.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Usher 5</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtUsher5">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 5.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Usher 6</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtUsher6">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose an usher.</mat-error>
+              <mat-hint>Please choose an Usher 6.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field>
+              <mat-label>Rosary 1</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtRosary1">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose for the Rosary.</mat-error>
+              <mat-hint>Please choose a Rosary 1.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Rosary 2</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtRosary2">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose for the Rosary.</mat-error>
+              <mat-hint>Please choose a Rosary 2.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Other</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtOther">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose someone.</mat-error>
+              <mat-hint>Please choose someone.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-around">
+          <td>
+            <mat-form-field>
+              <mat-label>Technology 1</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtTech1">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose a EMoHC.</mat-error>
+              <mat-hint>Please choose a Technology 1.</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Technology 2</mat-label>
+              <mat-select
+                matInput
+                formControlName="evtTech2">
+                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
+                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
+                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
+                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
+              </mat-select>
+              <mat-error>Please choose for Gifts.</mat-error>
+              <mat-hint>Please choose a Technology 2.</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="form-buttons">
+    <div fxLayout fxLayoutAlign="space-between">
+      <div>
+        <button
+          mat-button
+          type="submit"
+          value="Submit"
+          mat-stroked-button
+          color="primary">
+          Submit
+        </button>
+      </div>
+      <div>
+        <button 
+          mat-stroked-button
+          type="button" 
+          (click)="onEditFormFill()"
+          color="accent">
+          Fill Form
+        </button>      
+      </div>
+    </div>
+    </div>   
+  </div>
+</form>

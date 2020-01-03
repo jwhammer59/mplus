@@ -5,3 +5,12 @@
 .layout {
   width: 60%;
 }
+
+table {
+  width: 100%;
+}
+
+.form-buttons {
+  margin-top: 1.5rem;
+  width: 30%;
+}
