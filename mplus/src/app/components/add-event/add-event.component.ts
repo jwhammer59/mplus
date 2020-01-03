@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Event } from '../../models/Event';
 import { EventsService } from '../../services/events.service';
@@ -22,36 +22,36 @@ export class AddEventComponent implements OnInit {
     private _snackBar: MatSnackBar
     ) {
 
-      this.eventForm = new FormGroup({
-        evtType: new FormControl(''),
-        evtDate: new FormControl(new Date()),
-        evtIsFull: new FormControl(false),
-        evtCantor: new FormControl(''),
-        evtEMoHC1: new FormControl(''),
-        evtEMoHC2: new FormControl(''),
-        evtEMoHC3: new FormControl(''),
-        evtEMoHC4: new FormControl(''),
-        evtEMoHC5: new FormControl(''),
-        evtEMoHC6: new FormControl(''),
-        evtEMoHC7: new FormControl(''),
-        evtGifts: new FormControl(''),
-        evtGiftsChild: new FormControl(''),
-        evtLector1: new FormControl(''),
-        evtLector2: new FormControl(''),
-        evtOther: new FormControl(''),
-        evtRosary1: new FormControl(''),
-        evtRosary2: new FormControl(''),
-        evtServer1: new FormControl(''),
-        evtServer2: new FormControl(''),
-        evtServer3: new FormControl(''),
-        evtTech1: new FormControl(''),
-        evtTech2: new FormControl(''),
-        evtUsher1: new FormControl(''),
-        evtUsher2: new FormControl(''),
-        evtUsher3: new FormControl(''),
-        evtUsher4: new FormControl(''),
-        evtUsher5: new FormControl(''),
-        evtUsher6: new FormControl('')
+      this.eventForm = this.fb.group({
+        evtType: ['', Validators.required],
+        evtDate: ['', Validators.required],
+        evtIsFull: [false, Validators.required],
+        evtCantor: ['', Validators.required],
+        evtEMoHC1: ['', Validators.required],
+        evtEMoHC2: ['', Validators.required],
+        evtEMoHC3: ['', Validators.required],
+        evtEMoHC4: ['', Validators.required],
+        evtEMoHC5: ['', Validators.required],
+        evtEMoHC6: ['', Validators.required],
+        evtEMoHC7: ['', Validators.required],
+        evtGifts: ['', Validators.required],
+        evtGiftsChild: ['', Validators.required],
+        evtLector1: ['', Validators.required],
+        evtLector2: ['', Validators.required],
+        evtOther: ['', Validators.required],
+        evtRosary1: ['', Validators.required],
+        evtRosary2: ['', Validators.required],
+        evtServer1: ['', Validators.required],
+        evtServer2: ['', Validators.required],
+        evtServer3: ['', Validators.required],
+        evtTech1: ['', Validators.required],
+        evtTech2: ['', Validators.required],
+        evtUsher1: ['', Validators.required],
+        evtUsher2: ['', Validators.required],
+        evtUsher3: ['', Validators.required],
+        evtUsher4: ['', Validators.required],
+        evtUsher5: ['', Validators.required],
+        evtUsher6: ['', Validators.required]
       });
      }
 

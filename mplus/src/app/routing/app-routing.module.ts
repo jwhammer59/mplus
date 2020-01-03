@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'event-details/:id', component: EventDetailComponent},
   {path: 'add-event', component: AddEventComponent},
   {path: 'edit-event/:id', component: EditEventComponent},
-  {path: 'volunteer', component: VolunteerComponent},
+  {path: 'volunteers', component: VolunteerComponent},
   {path: 'add-volunteer', component: AddVolunteerComponent},
   {path: 'edit-volunteer/:id', component: EditVolunteerComponent},
   {path: 'contact-us', component: ContactUsComponent},

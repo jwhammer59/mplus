@@ -2,20 +2,16 @@
     <div><h1 class="mat-h1">Add Volunteer</h1></div>
   </div>
   
-  <form #volunteerForm="ngForm" (ngSubmit)="onSubmit(volunteerForm)">
+  <form [formGroup]="volunteerForm" (ngSubmit)="onSubmit(volunteerForm)" novalidate>
     <div fxLayout="column" fxLayoutAlign="center center">
       <div class="layout">
         <mat-form-field fxFlexFill>
+          <mat-label>First Name</mat-label>
           <input
           matInput
           type="text"
-          class="form-control"
-          name="firstName"
-          #volFirstName="ngModel"
-          [(ngModel)]="volunteer.firstName"
           placeholder="First Name"
-          minlength="2"
-          required>
+          formControlName="firstName">
         </mat-form-field>
       </div>
       <div class="layout">
@@ -23,27 +19,17 @@
           <input
           matInput
           type="text"
-          class="form-control"
-          name="lastName"
-          #volLastName="ngModel"
-          [(ngModel)]="volunteer.lastName"
           placeholder="Last Name"
-          minlength="2"
-          required>
+          formControlName="lastName">
         </mat-form-field>
       </div>
       <div class="layout">
         <mat-form-field fxFlexFill>
           <input
           matInput
-          type="text"
-          class="form-control"
-          name="email"
-          #volEmail="ngModel"
-          [(ngModel)]="volunteer.email"
-          placeholder="Email"
-          minlength="2"
-          required>
+          type="email"
+          placeholder="email"
+          formControlName="email">
           </mat-form-field>
       </div>  
       <div class="layout">
@@ -51,13 +37,8 @@
           <input
           matInput
           type="text"
-          class="form-control"
-          name="phone"
-          #volPhone="ngModel"
-          [(ngModel)]="volunteer.phone"
           placeholder="Phone"
-          minlength="2"
-          required>
+          formControlName="phone">
         </mat-form-field>
       </div>
       <div class="layout">
@@ -66,16 +47,16 @@
             <td>
               <section fxLayout="column" fxLayoutAlign="space-between">
                 <mat-checkbox
-                  name="isAvailable" [(ngModel)]="volunteer.isAvailable">Available
+                 formControlName="isAvailable">Available
                 </mat-checkbox>
                 <mat-checkbox
-                  name="isAdmin" [(ngModel)]="volunteer.isAdmin">Admin
+                  formControlName="isAdmin">Admin
                 </mat-checkbox>
                 <mat-checkbox
-                  name="isEMoHC" [(ngModel)]="volunteer.isEMoHC">EMoHC
+                  formControlName="isEMoHC">EMoHC
                 </mat-checkbox>
                 <mat-checkbox
-                  name="isLector" [(ngModel)]="volunteer.isLector">Lector
+                  formControlName="isLector">Lector
                 </mat-checkbox>
               </section>
             </td>
@@ -84,16 +65,16 @@
             <td>
               <section fxLayout="column" fxLayoutAlign="space-between">
                 <mat-checkbox 
-                  name="isCantor" [(ngModel)]="volunteer.isCantor">Cantor
+                  formControlName="isCantor">Cantor
                 </mat-checkbox>
                 <mat-checkbox 
-                  name="isUsher" [(ngModel)]="volunteer.isUsher">Usher
+                  formControlName="isUsher">Usher
                 </mat-checkbox>
                 <mat-checkbox 
-                  name="isServer" [(ngModel)]="volunteer.isServer">Server
+                  formControlName="isServer">Server
                 </mat-checkbox>
                 <mat-checkbox 
-                  name="isTech" [(ngModel)]="volunteer.isTech">Technology
+                  formControlName="isTech">Technology
                 </mat-checkbox>
               </section>
             </td>
@@ -102,16 +83,16 @@
             <td>
               <section fxLayout="column" fxLayoutAlign="space-between">
                 <mat-checkbox 
-                  name="isGifts" [(ngModel)]="volunteer.isGifts">Gifts
+                  formControlName="isGifts">Gifts
                 </mat-checkbox>
                 <mat-checkbox 
-                  name="isGiftsChild" [(ngModel)]="volunteer.isGiftsChild">Child Gifts
+                  formControlName="isGiftsChild">Child Gifts
                 </mat-checkbox>
                 <mat-checkbox 
-                  name="isRosary" [(ngModel)]="volunteer.isRosary">Rosary
+                  formControlName="isRosary">Rosary
                 </mat-checkbox>
                 <mat-checkbox 
-                  name="isOther" [(ngModel)]="volunteer.isOther">Other
+                  formControlName="isOther">Other
                 </mat-checkbox>
               </section>
             </td>
