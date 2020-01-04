@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { CustomPhonePipe } from './common/pipes/cust-phone-pipe';
+
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,7 +54,8 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
     DeleteEventComponent,
     DeleteVolunteerComponent,
     EventDetailComponent,
-    VolunteerDetailComponent
+    VolunteerDetailComponent,
+    CustomPhonePipe
   ],
   imports: [
     BrowserModule,

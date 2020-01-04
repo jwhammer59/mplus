@@ -26,7 +26,7 @@
     <!-- Phone Column -->
     <ng-container matColumnDef="phone">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
-      <mat-cell *matCellDef="let volunteer">{{volunteer.phone}}</mat-cell>
+      <mat-cell *matCellDef="let volunteer">{{volunteer.phone | phone}}</mat-cell>
     </ng-container>
 
     <!-- Email Column -->
