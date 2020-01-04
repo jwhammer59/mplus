@@ -2,7 +2,7 @@
   <div><h1 class="mat-h1">Edit Event</h1></div>
 </div>
 
-<form [formGroup]="eventEditForm" (ngSubmit)="onSubmit(eventEditForm)" novalidate>
+<form *ngIf="event | async; else loading" [formGroup]="eventEditForm" (ngSubmit)="onSubmit(eventEditForm)" novalidate>
   <div fxLayout="column" fxLayoutAlign="center center">
     <div class="layout">
       <table>
@@ -495,8 +495,16 @@
     <div class="form-buttons">
     <div fxLayout fxLayoutAlign="space-between">
       <div>
+        <button 
+          type="button" 
+          mat-stroked-button
+          [routerLink]="['/events']">
+          <mat-icon>arrow_back</mat-icon>
+          Events
+        </button>      
+      </div>
+      <div>
         <button
-          mat-button
           type="submit"
           value="Submit"
           mat-stroked-button
@@ -504,16 +512,11 @@
           Submit
         </button>
       </div>
-      <div>
-        <button 
-          mat-stroked-button
-          type="button" 
-          (click)="onEditFormFill()"
-          color="accent">
-          Fill Form
-        </button>      
-      </div>
     </div>
     </div>   
   </div>
 </form>
+
+<<ng-template #loading>
+  Loading event...
+</ng-template>

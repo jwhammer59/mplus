@@ -14,3 +14,14 @@ section {
   margin: 1.0rem 0;
 }
 
+td {
+  width: 100%;
+  margin: 0px 4px;
+}
+
+.form-buttons {
+  margin-top: 1.5rem;
+  width: 30%;
+}
+
+

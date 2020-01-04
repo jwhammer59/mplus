@@ -1,0 +1,11 @@
+.header {
+  margin-left: 2rem;
+}
+
+mat-card {
+  min-width: 450px;
+}
+
+mat-card-footer {
+  padding-right: 2rem;
+}

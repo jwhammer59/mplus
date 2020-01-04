@@ -56,14 +56,13 @@ export class EventDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.eventsService.getEvent(this.id).subscribe(event => {
       this.event = event;
-      console.log(this.event);
     })
   }
   
   onDeleteClicked(item) {
     const dialogRef = this.dialog.open(DeleteEventComponent, {
       width: '250px',
-      data: {name: this.event.evtType, owner: this.event.evtDate}
+      data: {type: this.event.evtType, date: this.event.evtDate}
     });
 
     dialogRef.afterClosed().subscribe(result => {

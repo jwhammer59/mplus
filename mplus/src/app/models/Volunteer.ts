@@ -4,6 +4,10 @@ export interface Volunteer {
   lastName: string;
   phone: string;
   email: string;
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string;
   isAvailable: boolean;
   isAdmin: boolean;
   isEMoHC: boolean;

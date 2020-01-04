@@ -8,11 +8,12 @@ import { PageNotFoundComponent } from './../components/page-not-found/page-not-f
 import { EventComponent } from '../components/event/event.component';
 import { AddEventComponent } from '../components/add-event/add-event.component';
 import { EditEventComponent } from './../components/edit-event/edit-event.component';
+import { EventDetailComponent } from './../components/event-detail/event-detail.component';
 import { VolunteerComponent } from './../components/volunteer/volunteer.component';
 import { AddVolunteerComponent } from './../components/add-volunteer/add-volunteer.component';
 import { EditVolunteerComponent } from './../components/edit-volunteer/edit-volunteer.component';
+import { VolunteerDetailComponent } from './../components/volunteer-detail/volunteer-detail.component';
 import { DashboardComponent } from './../components/dashboard/dashboard.component';
-import { EventDetailComponent } from './../components/event-detail/event-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'add-event', component: AddEventComponent},
   {path: 'edit-event/:id', component: EditEventComponent},
   {path: 'volunteers', component: VolunteerComponent},
+  {path: 'volunteer-details/:id', component: VolunteerDetailComponent},
   {path: 'add-volunteer', component: AddVolunteerComponent},
   {path: 'edit-volunteer/:id', component: EditVolunteerComponent},
   {path: 'contact-us', component: ContactUsComponent},

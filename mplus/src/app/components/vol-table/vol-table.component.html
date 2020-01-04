@@ -36,7 +36,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row [routerLink]="['/edit-volunteer', row.id]" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row [routerLink]="['/volunteer-details', row.id]" *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
   <mat-paginator #paginator

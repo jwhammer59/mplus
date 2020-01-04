@@ -71,8 +71,36 @@
       </mat-accordion>
     </mat-card-content>
     <mat-card-actions align="center">
-      <button mat-stroked-button routerLink="/edit-event/{{id}}" matRipple color="accent" align="start">Edit</button>
-      <button (click)="onDeleteClicked()" mat-stroked-button matRipple color="warn" align="end">Delete</button>
+      <div fxLayout fxLayoutAlign="space-evenly">
+        <div>
+          <button
+            mat-stroked-button
+            routerLink="/events"
+            matRipple
+            color="primary">
+            <mat-icon>arrow_back</mat-icon>
+            Events
+          </button>
+        </div>
+        <div>
+          <button
+            mat-stroked-button
+            routerLink="/edit-event/{{id}}"
+            matRipple
+            color="accent">
+            Edit
+          </button>
+        </div>
+        <div>
+          <button
+            (click)="onDeleteClicked()"
+            mat-stroked-button
+            matRipple
+            color="warn">
+            Delete
+          </button>
+        </div>
+    </div>
     </mat-card-actions>
     <mat-card-footer align="end">
       <p><mat-checkbox [disabled]=true [checked]="event.evtIsFull">Event Is Full</mat-checkbox></p>

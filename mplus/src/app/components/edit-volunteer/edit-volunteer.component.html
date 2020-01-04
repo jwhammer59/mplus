@@ -1,1 +1,196 @@
-<p>edit-volunteer works!</p>
+<div class="grid-container">
+  <div><h1 class="mat-h1">Edit Volunteer</h1></div>
+</div>
+
+<form *ngIf="volunteer | async; else loading" [formGroup]="volunteerEditForm" (ngSubmit)="onSubmit(volunteerEditForm)" novalidate>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field fxFlexFill>
+              <mat-label>First Name</mat-label>
+              <input
+              matInput
+              type="text"
+              placeholder="First Name"
+              formControlName="firstName">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field fxFlexFill>
+              <input
+              matInput
+              type="text"
+              placeholder="Last Name"
+              formControlName="lastName">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field fxFlexFill>
+              <input
+              matInput
+              type="email"
+              placeholder="email"
+              formControlName="email">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field fxFlexFill>
+              <input
+              matInput
+              type="text"
+              placeholder="Phone"
+              formControlName="phone">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>    
+    </div>
+
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="center center">
+          <td>
+            <mat-form-field fxFlexFill>
+              <mat-label>Street</mat-label>
+              <input
+              matInput
+              type="text"
+              placeholder="Street"
+              formControlName="street">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="layout">
+      <table>
+        <tr fxLayout fxLayoutAlign="space-between">
+          <td>
+            <mat-form-field fxFlexFill>
+              <input
+              matInput
+              type="text"
+              placeholder="City"
+              formControlName="city">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field fxFlexFill>
+              <input
+              matInput
+              type="text"
+              placeholder="State"
+              formControlName="state">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field fxFlexFill>
+              <input
+              matInput
+              type="text"
+              placeholder="Zipcode"
+              formControlName="zipcode">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>    
+
+
+    <div class="layout">
+      <table fxLayout fxLayoutAlign="space-between">
+        <tr>
+          <td>
+            <section fxLayout="column" fxLayoutAlign="space-between">
+              <mat-checkbox
+               formControlName="isAvailable">Available
+              </mat-checkbox>
+              <mat-checkbox
+                formControlName="isAdmin">Admin
+              </mat-checkbox>
+              <mat-checkbox
+                formControlName="isEMoHC">EMoHC
+              </mat-checkbox>
+              <mat-checkbox
+                formControlName="isLector">Lector
+              </mat-checkbox>
+            </section>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <section fxLayout="column" fxLayoutAlign="space-between">
+              <mat-checkbox 
+                formControlName="isCantor">Cantor
+              </mat-checkbox>
+              <mat-checkbox 
+                formControlName="isUsher">Usher
+              </mat-checkbox>
+              <mat-checkbox 
+                formControlName="isServer">Server
+              </mat-checkbox>
+              <mat-checkbox 
+                formControlName="isTech">Technology
+              </mat-checkbox>
+            </section>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <section fxLayout="column" fxLayoutAlign="space-between">
+              <mat-checkbox 
+                formControlName="isGifts">Gifts
+              </mat-checkbox>
+              <mat-checkbox 
+                formControlName="isGiftsChild">Child Gifts
+              </mat-checkbox>
+              <mat-checkbox 
+                formControlName="isRosary">Rosary
+              </mat-checkbox>
+              <mat-checkbox 
+                formControlName="isOther">Other
+              </mat-checkbox>
+            </section>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="form-buttons">
+      <div fxLayout fxLayoutAlign="space-between">
+        <div>
+          <button
+            mat-stroked-button
+            type="button"
+            [routerLink]="['/volunteers']">
+            <mat-icon>arrow_back</mat-icon>
+            Volunteers
+          </button>
+        </div>
+        <div>
+          <button
+            type="submit"
+            value="Submit"
+            mat-stroked-button
+            color="primary">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>  
+  </div>
+</form>
+
+<ng-template #loading>
+  Loading Volunteer...
+</ng-template>
