@@ -25,7 +25,7 @@ export class AddVolunteerComponent implements OnInit {
     this.volunteerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       email: ['', Validators.required],
       street: ['', Validators.required],
       city: ['', Validators.required],
@@ -48,6 +48,8 @@ export class AddVolunteerComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  get f() {return this.volunteerForm.controls;}
 
   onSubmit({value}: {value: Volunteer}) {
     this.volunteersService.addVolunteer(value);

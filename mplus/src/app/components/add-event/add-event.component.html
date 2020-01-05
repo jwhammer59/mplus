@@ -491,15 +491,36 @@
       </table>
     </div>
 
-    <div>
-      <button
-        mat-button
-        type="submit"
-        value="Submit"
-        mat-stroked-button
-        color="primary">
-        Submit
-      </button>
-    </div>   
+    <div class="form-buttons">
+      <div fxLayout fxLayoutAlign="space-between">
+        <div>
+          <button 
+            type="button" 
+            mat-raised-button
+            [routerLink]="['/events']">
+            <mat-icon>arrow_back</mat-icon>
+            Events
+          </button>      
+        </div>
+        <div>
+          <button
+            type="submit"
+            value="Submit"
+            mat-raised-button
+            color="primary">
+            Submit
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            [routerLink]="['/events']"
+            mat-raised-button
+            color="accent">
+            Cancel
+          </button>
+        </div>
+      </div>
+      </div>   
   </div>
 </form>

@@ -46,10 +46,13 @@
               <mat-form-field fxFlexFill>
                 <input
                 matInput
-                type="text"
+                #phone
+                type="string "
                 placeholder="Phone"
                 formControlName="phone">
+                <mat-hint align="end">{{ phone.value?.length || 0}}/10</mat-hint>
               </mat-form-field>
+              <mat-error *ngIf="f.phone.errors">Phone number must be 10 characters</mat-error>
             </td>
           </tr>
         </table>    
@@ -170,7 +173,7 @@
         <div fxLayout fxLayoutAlign="space-between">
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               type="button"
               [routerLink]="['/volunteers']">
               <mat-icon>arrow_back</mat-icon>
@@ -181,12 +184,22 @@
             <button
               type="submit"
               value="Submit"
-              mat-stroked-button
+              mat-raised-button
               color="primary">
               Submit
             </button>
           </div>
+          <div>
+            <button
+              type="bittpm"
+              [routerLink]="['/volunteers']"
+              mat-raised-button
+              color="accent">
+              Cancel
+            </button>
+          </div>
         </div>
-      </div>   
+      </div>
+
     </div>
   </form>

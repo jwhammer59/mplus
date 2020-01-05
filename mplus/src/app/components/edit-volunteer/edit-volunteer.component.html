@@ -43,13 +43,18 @@
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field fxFlexFill>
+            <mat-form-field
+              fxFlexFill
+              hintLabel="Must be 10 numbers only.">
               <input
+              #phone
               matInput
               type="text"
-              placeholder="Phone"
+              placeholder="Phone - ex: 1112223333"
               formControlName="phone">
+              <mat-hint align="end">{{phone.value?.length || 0}}/10</mat-hint>
             </mat-form-field>
+            <mat-error>Phone number must be 10 characters.</mat-error>
           </td>
         </tr>
       </table>    
@@ -170,7 +175,7 @@
       <div fxLayout fxLayoutAlign="space-between">
         <div>
           <button
-            mat-stroked-button
+            mat-raised-button
             type="button"
             [routerLink]="['/volunteers']">
             <mat-icon>arrow_back</mat-icon>
@@ -181,9 +186,18 @@
           <button
             type="submit"
             value="Submit"
-            mat-stroked-button
+            mat-raised-button
             color="primary">
             Submit
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            [routerLink]="['/volunteers']"
+            mat-raised-button
+            color="accent">
+            Cancel
           </button>
         </div>
       </div>

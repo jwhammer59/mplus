@@ -46,7 +46,7 @@
         <div fxLayout fxLayoutAlign="space-evenly">
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               routerLink="/volunteers"
               matRipple
               color="primary">
@@ -56,9 +56,10 @@
           </div>
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               routerLink="/edit-volunteer/{{id}}"
               matRipple
+              color="accent"
               >
               Edit
             </button>
@@ -66,7 +67,7 @@
           <div>
             <button
               (click)="onDeleteClicked()"
-              mat-stroked-button
+              mat-raised-button
               matRipple
               color="warn">
               Delete
@@ -75,8 +76,22 @@
         </div>
       </mat-card-actions>
       <mat-card-footer align="center">
-        <p><mat-checkbox [disabled]=true [checked]="volunteer.isAvailable">Available</mat-checkbox></p>
-        <p><mat-checkbox [disabled]=true [checked]="volunteer.isAdmin">Admin</mat-checkbox></p>
+        <div fxLayout fxLayoutAlign="space-evenly">
+          <p>
+            <mat-checkbox
+              [disabled]=true
+              [checked]="volunteer.isAvailable">
+              Available
+            </mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox
+              [disabled]=true
+              [checked]="volunteer.isAdmin">
+              Admin
+            </mat-checkbox>
+          </p>
+        </div>
       </mat-card-footer>
     </mat-card>
   </div>
