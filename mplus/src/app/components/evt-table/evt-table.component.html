@@ -20,7 +20,7 @@
     <!-- Event Is Full Column-->
     <ng-container matColumnDef="evtIsFull">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Event Full</mat-header-cell>
-      <mat-cell *matCellDef="let event"><mat-checkbox [(ngModel)]="event.evtIsFull" [disabled]=true></mat-checkbox></mat-cell>
+      <mat-cell *matCellDef="let event"><mat-checkbox [checked]="event.evtIsFull" [disabled]=true></mat-checkbox></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

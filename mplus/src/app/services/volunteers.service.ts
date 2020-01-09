@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, noop } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 import { Volunteer } from '../models/Volunteer';
 
@@ -14,6 +14,7 @@ export class VolunteersService {
   private volunteerDoc: AngularFirestoreDocument<Volunteer>;
   private volunteers: Observable<Volunteer[]>;
   private volunteer: Observable<Volunteer>;
+  private vCantors: Observable<Volunteer[]>;
 
   constructor(private afs: AngularFirestore) {
     this.volunteersCollection = afs.collection<Volunteer>('volunteers');
@@ -62,4 +63,34 @@ export class VolunteersService {
      this.volunteerDoc = this.afs.doc(`volunteers/${volunteer.id}`);
      this.volunteerDoc.delete();
    }
-}
+   
+   
+   
+  }
+  
+  // getCantors(): Observable<Volunteer[]> {
+  //   this.vCantors = this.volunteersCollection
+  //     .valueChanges()
+  //     .pipe(
+  //       map(cantors => cantors
+  //         .filter(cantor => cantor.isCantor == true))
+  //     )
+  //     return this.vCantors;
+  // }
+
+  
+  // getCantors(): Observable<Volunteer[]> {
+  //   this.volunteers = this.volunteersCollection
+  //   .snapshotChanges()
+  //   .pipe(
+  //     map(actions => actions.map(a => {
+  //       const data = a.payload.doc.data() as Volunteer;
+  //       const id = a.payload.doc.id;
+  //       return { id, ...data};
+  //     }))
+  //   );
+  //   return this.volunteers;
+  // }
+  
+  // map(items => items.filter(item => item.attending)),
+  //       filter(items => items && items.length > 0)

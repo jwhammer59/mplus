@@ -34,8 +34,8 @@ export class EditVolunteerComponent implements OnInit {
       id: '',
       firstName: ['', Validators.required], 
       lastName: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      email: ['', Validators.email],
       street: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
@@ -59,10 +59,16 @@ export class EditVolunteerComponent implements OnInit {
     );
   }
 
+  get f() {return this.volunteerEditForm.controls;}
+
   onSubmit({value}: {value: Volunteer}) {
-    this.volunteersService.updateVolunteer(value);
-    this.openSnackBar('Volunteer Updated!', 'Cool!');
-    this.router.navigate(['/volunteers']);
+    if(!this.volunteerEditForm.valid) {
+      return this.openSnackBar('Form is not valid!', 'Error!!!');
+    } else {
+      this.volunteersService.updateVolunteer(value);
+      this.openSnackBar('Volunteer Updated!', 'Cool!');
+      this.router.navigate(['/volunteers']);
+    }
   }
 
   openSnackBar(message: string, action: string) {

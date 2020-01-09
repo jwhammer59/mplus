@@ -3,14 +3,28 @@
     <div class="dashboard-items">
   <div fxLayout="row" fxLayoutAlign="space-between">
       <div><h3 class="mat-h1">Events</h3></div>
-    <div><button mat-stroked-button color="primary">Add Event</button></div>
+    <div>
+      <button
+        mat-stroked-button
+        [routerLink]="['/add-event']"
+        color="primary">
+        Add Event
+      </button>
+    </div>
   </div>
       <app-evt-table></app-evt-table>
   </div>
   <div class="dashboard-items">
   <div fxLayout="row" fxLayoutAlign="space-between">
     <div><h3 class="mat-h1">Volunteers</h3></div>
-    <div><button mat-stroked-button color="primary">Add Volunteer</button></div>
+    <div>
+      <button
+        mat-stroked-button
+        [routerLink]="['/add-volunteer']"
+        color="primary">
+        Add Volunteer
+      </button>
+    </div>
   </div>
       <app-vol-table></app-vol-table>
   </div>

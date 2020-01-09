@@ -63,10 +63,13 @@ export class EditEventComponent implements OnInit {
       evtUsher6: ['', Validators.required]
     });
 
-    this.event = this.eventsService.getEvent(this.id).pipe(
-      tap(event => this.eventEditForm.patchValue(event))
+    this.event = this.eventsService.getEvent(this.id)
+      .pipe(
+        tap(event => this.eventEditForm.patchValue(event))
     );
   }
+
+  get f() {return this.eventEditForm.controls;}
 
   onSubmit({value}: {value: Event}) {
     this.eventsService.updateEvent(value);

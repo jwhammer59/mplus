@@ -40,19 +40,28 @@
                 type="email"
                 placeholder="email"
                 formControlName="email">
+                <mat-error
+                  *ngIf="f.email.touched && f.email.errors">
+                  Please enter valid email.
+                </mat-error>
               </mat-form-field>
             </td>
             <td>
-              <mat-form-field fxFlexFill>
+              <mat-form-field
+                fxFlexFill
+                hintLabel="Must be 10 numbers only!">
                 <input
                 matInput
                 #phone
-                type="string "
-                placeholder="Phone"
+                type="string"
+                placeholder="Phone - ex: 1112223333"
                 formControlName="phone">
                 <mat-hint align="end">{{ phone.value?.length || 0}}/10</mat-hint>
+                <mat-error
+                  *ngIf="f.phone.touched && f.phone.errors">
+                  Please enter 10 numbers only!
+                </mat-error>
               </mat-form-field>
-              <mat-error *ngIf="f.phone.errors">Phone number must be 10 characters</mat-error>
             </td>
           </tr>
         </table>    
@@ -89,11 +98,17 @@
             </td>
             <td>
               <mat-form-field fxFlexFill>
-                <input
-                matInput
-                type="text"
-                placeholder="State"
-                formControlName="state">
+                <mat-label>State</mat-label>
+                <mat-select
+                  matInput
+                  formControlName="state">
+                  <mat-option value="OH">OH</mat-option>
+                  <mat-option value="MI">MI</mat-option>
+                  <mat-option value="IN">IN</mat-option>
+                  <mat-option value="PA">PA</mat-option>
+                </mat-select>
+                <mat-hint>Please choose a state.</mat-hint>
+                <mat-error>State is required.</mat-error>
               </mat-form-field>
             </td>
             <td>

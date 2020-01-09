@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Event } from '../../models/Event';
 import { EventsService } from '../../services/events.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { Volunteer } from '../../models/Volunteer';
+import { VolunteersService } from '../../services/volunteers.service';
+import { Observable, pipe } from 'rxjs';
+
 
 @Component({
   selector: 'app-add-event',
@@ -14,9 +20,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddEventComponent implements OnInit {
 
   eventForm: FormGroup;
+  volunteers: Observable<Volunteer[]>;
+
+  onlyCantors: Observable<any>;
+  onlyLectors: Observable<any>;
+  onlyEMoHCs: Observable<any>;
+  onlyServers: Observable<any>;
+  onlyGifts: Observable<any>;
+  onlyGiftsChildren: Observable<any>;
+  onlyTechs: Observable<any>;
+  onlyUshers: Observable<any>;
+  onlyRosarys: Observable<any>;
+  onlyOthers: Observable<any>;
 
   constructor(
     private eventsService: EventsService,
+    private volunteersService: VolunteersService,
+    private afs: AngularFirestore,
     private router: Router,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar
@@ -24,7 +44,7 @@ export class AddEventComponent implements OnInit {
 
       this.eventForm = this.fb.group({
         evtType: ['', Validators.required],
-        evtDate: ['', Validators.required],
+        evtDate: [new Date(), Validators.required],
         evtIsFull: [false, Validators.required],
         evtCantor: ['', Validators.required],
         evtEMoHC1: ['', Validators.required],
@@ -55,7 +75,58 @@ export class AddEventComponent implements OnInit {
       });
      }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onlyCantors = this.afs
+      .collection('volunteers', ref => ref
+      .where('isCantor', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyLectors = this.afs
+      .collection('volunteers', ref => ref.where('isLector', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyEMoHCs = this.afs
+      .collection('volunteers', ref => ref.where('isEMoHC', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyGifts = this.afs
+      .collection('volunteers', ref => ref.where('isGifts', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyGiftsChildren = this.afs
+      .collection('volunteers', ref => ref.where('isGiftsChild', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyTechs = this.afs
+      .collection('volunteers', ref => ref.where('isTech', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyRosarys = this.afs
+      .collection('volunteers', ref => ref.where('isRosary', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyUshers = this.afs
+      .collection('volunteers', ref => ref.where('isUsher', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+    
+    this.onlyOthers = this.afs
+      .collection('volunteers', ref => ref.where('isOther', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyServers = this.afs
+      .collection('volunteers', ref => ref.where('isServer', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+  }
 
   onSubmit({value}: {value: Event}) {
     this.eventsService.addEvent(value);
