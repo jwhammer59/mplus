@@ -52,6 +52,7 @@ export class EditVolunteerComponent implements OnInit {
       isOther: [false, Validators.required],
       isUsher: [false, Validators.required],
       isRosary: [false, Validators.required],
+      isMassCord: [false, Validators.required],
     });
 
     this.volunteer = this.volunteersService.getVolunteer(this.id).pipe(

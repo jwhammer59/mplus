@@ -23,7 +23,7 @@ export interface Event {
   evtUsher3: string;
   evtUsher4: string;
   evtUsher5: string;
-  evtUsher6: string;
+  evtMassCord: string;
   evtTech1: string;
   evtTech2: string;
   evtServer1: string;

@@ -2,499 +2,590 @@
   <div><h1 class="mat-h1">Edit Event</h1></div>
 </div>
 
-<form *ngIf="event | async; else loading" [formGroup]="eventEditForm" (ngSubmit)="onSubmit(eventEditForm)" novalidate>
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                formControlName="evtDate"
-                [matDatepicker]="picker"
-                placeholder="Choose a date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Event Type</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtType">
-                <mat-option value="Saturday">Saturday</mat-option>
-                <mat-option value="Sunday - Early">Sunday - Early</mat-option>
-                <mat-option value="Sunday - Late">Sunday - Late</mat-option>
-              </mat-select>
-              <mat-error>Please choose an event type.</mat-error>
-              <mat-hint>Please choose an event type.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <h5>{{ event.id }}</h5>
-            <mat-checkbox formControlName="evtIsFull">Is Full</mat-checkbox>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>Cantor</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtCantor">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a Cantor</mat-error>
-              <mat-hint>Please choose a Cantor.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Lector 1</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtLector1">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a lector.</mat-error>
-              <mat-hint>Please choose a Lector 1.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Lector 2</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtLector2">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a lector.</mat-error>
-              <mat-hint>Please choose a Lector 2.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 1</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC1">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 1.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 2</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC2">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 2.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 3</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC3">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 3.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 4</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC4">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 4.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 5</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC5">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 5.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 6</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC6">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 6.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
+<div fxLayout fxLayoutAlign="center center">
+  <div class="layout"><!-- Layout Wrapper Div-->
+    <form *ngIf="event | async; else loading" [formGroup]="eventEditForm" (ngSubmit)="onSubmit(eventEditForm)" novalidate>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Edit Events Form</mat-card-title>
+            <mat-card-subtitle>Click panels below to edit event details.</mat-card-subtitle>
+          </mat-card-header>
+          <div fxLayout="column" fxLayoutAlign="space-between">
+            <div class="layout">
+              <table>
+                <tr fxLayout fxLayoutAlign="space-between">
+                  <td>
+                    <mat-form-field>
+                      <input
+                        matInput
+                        formControlName="evtDate"
+                        [matDatepicker]="picker"
+                        placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field>
+                      <mat-label>Event Type</mat-label>
+                      <mat-select
+                        matInput
+                        formControlName="evtType">
+                        <mat-option value="Saturday">Saturday</mat-option>
+                        <mat-option value="Sunday - Early">Sunday - Early</mat-option>
+                        <mat-option value="Sunday - Late">Sunday - Late</mat-option>
+                      </mat-select>
+                      <mat-error>Please choose an event type.</mat-error>
+                      <mat-hint></mat-hint>
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <h5>{{ event.id }}</h5>
+                    <mat-checkbox formControlName="evtIsFull">Is Full</mat-checkbox>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div><!-- End of Date & Time Div -->
 
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>EMoHC 7</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtEMoHC7">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose an EMoHC 7.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Gifts</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtGifts">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose a Gift Bearer.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Child Gifts</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtGiftsChild">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose for Child Gifts.</mat-error>
-              <mat-hint>Please choosea Child Gift Bearer.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>Server 1</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtServer1">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a server</mat-error>
-              <mat-hint>Please choose a Server 1.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Server 2</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtServer2">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a server.</mat-error>
-              <mat-hint>Please choose a Server 2.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Server 3</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtServer3">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a server.</mat-error>
-              <mat-hint>Please choose a Server 3.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>Usher 1</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtUsher1">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose an usher</mat-error>
-              <mat-hint>Please choose an Usher 1.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Usher 2</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtUsher2">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose an usher.</mat-error>
-              <mat-hint>Please choose an Usher 2.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Usher 3</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtUsher3">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose an usher.</mat-error>
-              <mat-hint>Please choose an Usher 3.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>Usher 4</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtUsher4">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose an usher.</mat-error>
-              <mat-hint>Please choose an Usher 4.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Usher 5</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtUsher5">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose an usher.</mat-error>
-              <mat-hint>Please choose an Usher 5.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Usher 6</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtUsher6">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose an usher.</mat-error>
-              <mat-hint>Please choose an Usher 6.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-between">
-          <td>
-            <mat-form-field>
-              <mat-label>Rosary 1</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtRosary1">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose for the Rosary.</mat-error>
-              <mat-hint>Please choose a Rosary 1.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Rosary 2</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtRosary2">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose for the Rosary.</mat-error>
-              <mat-hint>Please choose a Rosary 2.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Other</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtOther">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose someone.</mat-error>
-              <mat-hint>Please choose someone.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="layout">
-      <table>
-        <tr fxLayout fxLayoutAlign="space-around">
-          <td>
-            <mat-form-field>
-              <mat-label>Technology 1</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtTech1">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose a EMoHC.</mat-error>
-              <mat-hint>Please choose a Technology 1.</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Technology 2</mat-label>
-              <mat-select
-                matInput
-                formControlName="evtTech2">
-                <mat-option value="Jeff Hammer">Jeff Hammer</mat-option>
-                <mat-option value="Deb Hammer">Deb Hammer</mat-option>
-                <mat-option value="Kevin Hammer">Kevin Hammer</mat-option>
-                <mat-option value="Gavin Hammer">Gavin Hammer</mat-option>
-              </mat-select>
-              <mat-error>Please choose for Gifts.</mat-error>
-              <mat-hint>Please choose a Technology 2.</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
+          <mat-card-content>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Lectors & EMoHC</mat-panel-title>
+                </mat-expansion-panel-header>
 
-    <div class="form-buttons">
-    <div fxLayout fxLayoutAlign="space-between">
-      <div>
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Lector 1</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtLector1">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyLectors | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a lector.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Lector 2</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtLector2">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyLectors | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a lector.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 1</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC1">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Lector & EMoHC 1-->
+                
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 2</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC2">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 3</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC3">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 4</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC4">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of EMoHC 2, 3, 4-->
+                
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 5</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC5">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 6</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC6">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>EMoHC 7</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtEMoHC7">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyEMoHCs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of EMoHC 5, 6, 7-->
+
+              </mat-expansion-panel><!-- End of Lector & EMoHC-->
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Cantors, Gifts, Servers & Technology</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Cantor</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtCantor">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyCantors | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a Cantor</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Gifts</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtGifts">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyGifts | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose for Gifts.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Child Gifts</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtGiftsChild">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyGiftsChildren | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose for Child Gifts.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Cantor & Gifts -->
+                
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Server 1</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtServer1">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyServers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a server</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Server 2</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtServer2">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyServers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a server.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Server 3</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtServer3">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyServers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a server.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Servers -->
+
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-around">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Technology 1</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtTech1">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyTechs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a EMoHC.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Technology 2</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtTech2">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyTechs | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose for Gifts.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Technology -->
+
+              </mat-expansion-panel><!-- End of Cantor, Gifts, Servers & Tech-->
+
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Ushers, Mass Coordinator, Rosary & Others</mat-panel-title>
+                </mat-expansion-panel-header>
+    
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Usher 1</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtUsher1">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyUshers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an usher</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Usher 2</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtUsher2">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyUshers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an usher.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Usher 3</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtUsher3">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyUshers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an usher.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Ushers 1, 2, 3-->
+                
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Usher 4</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtUsher4">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyUshers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an usher.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Usher 5</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtUsher5">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyUshers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an usher.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Mass Coordinator</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtMassCord">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyMassCords | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose a Mass Coordinator.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Ushers 4, 5 & Mass Cord-->
+                
+                <div class="layout">
+                  <table>
+                    <tr fxLayout fxLayoutAlign="space-between">
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Rosary 1</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtRosary1">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyRosarys | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose for the Rosary.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Rosary 2</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtRosary2">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyRosarys | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose for the Rosary.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field>
+                          <mat-label>Other</mat-label>
+                          <mat-select
+                            matInput
+                            formControlName="evtOther">
+                            <mat-option value=""></mat-option>
+                            <mat-option
+                              *ngFor="let vol of onlyOthers | async"
+                              [value]='vol.firstName + " " + vol.lastName'>
+                              {{vol.firstName}} {{vol.lastName}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose someone.</mat-error>
+                          <mat-hint></mat-hint>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div><!-- End of Rosary & Other -->
+    
+              </mat-expansion-panel><!-- End of Ushers, Rosary & Other-->
+
+
+            </mat-accordion><!--End of Accordion-->
+        </mat-card-content><!-- End of Card Content-->
+
+        <mat-card-actions align="center">
+
+        
+
+    <div fxLayout fxLayoutAlign="space-evenly">
         <button 
           type="button" 
           mat-raised-button
@@ -502,8 +593,6 @@
           <mat-icon>arrow_back</mat-icon>
           Events
         </button>      
-      </div>
-      <div>
         <button
           type="submit"
           value="Submit"
@@ -511,8 +600,6 @@
           color="primary">
           Submit
         </button>
-      </div>
-      <div>
         <button
           type="button"
           [routerLink]="['/events']"
@@ -520,12 +607,19 @@
           color="accent">
           Cancel
         </button>
-      </div>
     </div>
-    </div>   
-  </div>
-</form>
+   </mat-card-actions>
+      
+        </mat-card>
+      </div>
+    </form><!-- End of Form-->
+  </div><!-- End of Layout Wrapper Div-->
+</div><!-- End of Main Div-->
+    
 
 <<ng-template #loading>
   Loading event...
 </ng-template>
+
+
+

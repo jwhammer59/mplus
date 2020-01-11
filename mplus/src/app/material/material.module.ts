@@ -20,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [],
@@ -43,7 +44,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSnackBarModule,
     MatDialogModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
   ],
   exports: [
     MatToolbarModule,
@@ -65,7 +67,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSnackBarModule,
     MatDialogModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: []

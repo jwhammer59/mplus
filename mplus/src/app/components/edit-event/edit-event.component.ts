@@ -8,6 +8,9 @@ import { EventsService } from './../../services/events.service';
 import { Event } from '../../models/Event';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
+
 @Component({
   selector: 'app-edit-event',
   templateUrl: './edit-event.component.html',
@@ -19,17 +22,26 @@ export class EditEventComponent implements OnInit {
   event: Observable<Event>;
   id: string;
 
+  onlyCantors: Observable<any>;
+  onlyLectors: Observable<any>;
+  onlyEMoHCs: Observable<any>;
+  onlyServers: Observable<any>;
+  onlyGifts: Observable<any>;
+  onlyGiftsChildren: Observable<any>;
+  onlyTechs: Observable<any>;
+  onlyUshers: Observable<any>;
+  onlyRosarys: Observable<any>;
+  onlyOthers: Observable<any>;
+  onlyMassCords: Observable<any>;
+
   constructor(
     private eventsService: EventsService,
+    private afs: AngularFirestore,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar
-  ) {}
-
-  ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-
+  ) {
     this.eventEditForm = this.fb.group({
       id: '',
       evtType: ['', Validators.required],
@@ -60,13 +72,74 @@ export class EditEventComponent implements OnInit {
       evtUsher3: ['', Validators.required],
       evtUsher4: ['', Validators.required],
       evtUsher5: ['', Validators.required],
-      evtUsher6: ['', Validators.required]
+      evtMassCord: ['', Validators.required]
     });
+  }
+
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
 
     this.event = this.eventsService.getEvent(this.id)
       .pipe(
         tap(event => this.eventEditForm.patchValue(event))
     );
+
+    this.onlyCantors = this.afs
+      .collection('volunteers', ref => ref
+      .where('isCantor', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyLectors = this.afs
+      .collection('volunteers', ref => ref.where('isLector', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyEMoHCs = this.afs
+      .collection('volunteers', ref => ref.where('isEMoHC', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyGifts = this.afs
+      .collection('volunteers', ref => ref.where('isGifts', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyGiftsChildren = this.afs
+      .collection('volunteers', ref => ref.where('isGiftsChild', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyTechs = this.afs
+      .collection('volunteers', ref => ref.where('isTech', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyRosarys = this.afs
+      .collection('volunteers', ref => ref.where('isRosary', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyUshers = this.afs
+      .collection('volunteers', ref => ref.where('isUsher', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+    
+    this.onlyOthers = this.afs
+      .collection('volunteers', ref => ref.where('isOther', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+    this.onlyServers = this.afs
+      .collection('volunteers', ref => ref.where('isServer', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
+      this.onlyMassCords = this.afs
+      .collection('volunteers', ref => ref.where('isMassCord', '==', true)
+      .where('isAvailable', '==', true))
+      .valueChanges();
+
   }
 
   get f() {return this.eventEditForm.controls;}

@@ -20,4 +20,5 @@ export interface Volunteer {
   isOther: boolean;
   isUsher: boolean;
   isRosary: boolean;
+  isMassCord: boolean;
 }

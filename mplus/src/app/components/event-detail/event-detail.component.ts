@@ -37,7 +37,7 @@ export class EventDetailComponent implements OnInit {
     evtUsher3: '',
     evtUsher4: '',
     evtUsher5: '',
-    evtUsher6: '',
+    evtMassCord: '',
     evtTech1: '',
     evtTech2: '',
     evtServer1: '',

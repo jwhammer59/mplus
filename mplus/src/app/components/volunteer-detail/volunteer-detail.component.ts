@@ -34,6 +34,7 @@ export class VolunteerDetailComponent implements OnInit {
     isOther: false,
     isUsher: false,
     isRosary: false,
+    isMassCord: false
   }
 
   constructor(

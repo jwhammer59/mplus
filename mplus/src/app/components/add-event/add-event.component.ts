@@ -1,16 +1,13 @@
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { Event } from '../../models/Event';
 import { EventsService } from '../../services/events.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Volunteer } from '../../models/Volunteer';
 import { VolunteersService } from '../../services/volunteers.service';
-import { Observable, pipe } from 'rxjs';
-
 
 @Component({
   selector: 'app-add-event',
@@ -20,7 +17,7 @@ import { Observable, pipe } from 'rxjs';
 export class AddEventComponent implements OnInit {
 
   eventForm: FormGroup;
-  volunteers: Observable<Volunteer[]>;
+  eventFull: number = 0;
 
   onlyCantors: Observable<any>;
   onlyLectors: Observable<any>;
@@ -32,11 +29,11 @@ export class AddEventComponent implements OnInit {
   onlyUshers: Observable<any>;
   onlyRosarys: Observable<any>;
   onlyOthers: Observable<any>;
+  onlyMassCords: Observable<any>;
 
   constructor(
     private eventsService: EventsService,
     private volunteersService: VolunteersService,
-    private afs: AngularFirestore,
     private router: Router,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar
@@ -71,68 +68,160 @@ export class AddEventComponent implements OnInit {
         evtUsher3: ['', Validators.required],
         evtUsher4: ['', Validators.required],
         evtUsher5: ['', Validators.required],
-        evtUsher6: ['', Validators.required]
+        evtMassCord: ['', Validators.required]
       });
      }
 
   ngOnInit() {
-    this.onlyCantors = this.afs
-      .collection('volunteers', ref => ref
-      .where('isCantor', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+    this.onlyCantors = this.volunteersService.getCantors();
+    this.onlyLectors = this.volunteersService.getLectors();
+    this.onlyServers = this.volunteersService.getServers();
+    this.onlyUshers = this.volunteersService.getUshers();
+    this.onlyGifts = this.volunteersService.getGifts();
+    this.onlyGiftsChildren = this.volunteersService.getGiftsChildren();
+    this.onlyRosarys = this.volunteersService.getRosarys();
+    this.onlyOthers = this.volunteersService.getOthers();
+    this.onlyTechs = this.volunteersService.getTechs();
+    this.onlyEMoHCs = this.volunteersService.getEMoHCs();
+    this.onlyMassCords = this.volunteersService.getMassCords();
+  }
 
-    this.onlyLectors = this.afs
-      .collection('volunteers', ref => ref.where('isLector', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+  get f() {return this.eventForm.controls;}
 
-    this.onlyEMoHCs = this.afs
-      .collection('volunteers', ref => ref.where('isEMoHC', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+  checkStaffingLevel() {
+    if(this.f.evtType.value === 'Saturday') {
+      this.checkSaturdayStaffing();
+    } else if(this.f.evtType.value === 'Sunday - Early') {
+      this.checkSundayEarlyStaffing();
+    } else {
+      this.checkSundayLateStaffing();
+    }
+  }
 
-    this.onlyGifts = this.afs
-      .collection('volunteers', ref => ref.where('isGifts', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+  checkSaturdayStaffing() {
+    this.eventFull = 0;
+    this.saturdayOrSundayLateStaffing();
+  }
 
-    this.onlyGiftsChildren = this.afs
-      .collection('volunteers', ref => ref.where('isGiftsChild', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+  checkSundayEarlyStaffing() {
+    console.log('Sunday Early Staffing');
+  }
 
-    this.onlyTechs = this.afs
-      .collection('volunteers', ref => ref.where('isTech', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+  checkSundayLateStaffing() {
+    this.eventFull = 0;
+    this.saturdayOrSundayLateStaffing();
+  }
 
-    this.onlyRosarys = this.afs
-      .collection('volunteers', ref => ref.where('isRosary', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+  saturdayOrSundayLateStaffing() {
+    if(this.f.evtCantor.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
 
-    this.onlyUshers = this.afs
-      .collection('volunteers', ref => ref.where('isUsher', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-    
-    this.onlyOthers = this.afs
-      .collection('volunteers', ref => ref.where('isOther', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+    if(this.f.evtLector1.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
 
-    this.onlyServers = this.afs
-      .collection('volunteers', ref => ref.where('isServer', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+    if(this.f.evtLector2.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC1.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC2.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC3.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC4.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC5.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC6.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtEMoHC7.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtGifts.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtGiftsChild.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtServer1.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtServer2.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtServer3.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtUsher1.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtUsher2.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtUsher3.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtUsher4.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtUsher5.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtMassCord.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtRosary1.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtRosary2.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtTech1.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.f.evtTech2.value !== '') {
+      this.eventFull = this.eventFull + 4;
+    }
+
+    if(this.eventFull === 100) {
+      console.log('Event is Full');
+    }
   }
 
   onSubmit({value}: {value: Event}) {
     this.eventsService.addEvent(value);
     this.openSnackBar('Event Added!', 'Awesome!')
     this.router.navigate(['/events']);
-    console.log(value);
   }
 
   openSnackBar(message: string, action: string) {

@@ -3,14 +3,21 @@
 }
 
 .layout {
-  width: 60%;
+  width: 95%;
 }
 
 table {
   width: 100%;
 }
 
-.form-buttons {
-  margin-top: 1.5rem;
-  width: 30%;
+button {
+  margin: 1.5rem 0;
+}
+
+mat-card {
+  width: 95%;
+}
+
+.progress-bar-container {
+  padding-bottom: 1rem;
 }
