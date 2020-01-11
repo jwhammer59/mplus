@@ -8,6 +8,7 @@ import { EventsService } from '../../services/events.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { VolunteersService } from '../../services/volunteers.service';
+// import { ValidateEvent } from '../../common/validators/event-item-required';
 
 @Component({
   selector: 'app-add-event',
@@ -17,7 +18,8 @@ import { VolunteersService } from '../../services/volunteers.service';
 export class AddEventComponent implements OnInit {
 
   eventForm: FormGroup;
-  eventFull: number = 0;
+  prBarCounter: number = 0;
+  eventFull: boolean = false;
 
   onlyCantors: Observable<any>;
   onlyLectors: Observable<any>;
@@ -88,133 +90,145 @@ export class AddEventComponent implements OnInit {
 
   get f() {return this.eventForm.controls;}
 
+  // checkStaffingLevel() {
+  //   if(this.f.evtType.value === 'Saturday') {
+  //     this.saturdayOrSundayLateStaffing();
+  //   } else if(this.f.evtType.value === 'Sunday - Early') {
+  //     this.saturdayOrSundayLateStaffing();
+  //   } else {
+  //     this.saturdayOrSundayLateStaffing();
+  //   }
+  // }
+
   checkStaffingLevel() {
-    if(this.f.evtType.value === 'Saturday') {
-      this.checkSaturdayStaffing();
-    } else if(this.f.evtType.value === 'Sunday - Early') {
-      this.checkSundayEarlyStaffing();
-    } else {
-      this.checkSundayLateStaffing();
-    }
-  }
-
-  checkSaturdayStaffing() {
-    this.eventFull = 0;
-    this.saturdayOrSundayLateStaffing();
-  }
-
-  checkSundayEarlyStaffing() {
-    console.log('Sunday Early Staffing');
-  }
-
-  checkSundayLateStaffing() {
-    this.eventFull = 0;
-    this.saturdayOrSundayLateStaffing();
-  }
-
-  saturdayOrSundayLateStaffing() {
-    if(this.f.evtCantor.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    this.prBarCounter = 0;
+    if(this.f.evtCantor.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtCantor.value !== '' && this.f.evtType.value === 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtLector1.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtLector1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+      console.log('1st Clg', this.f.evtLector1.value);
+    } else if (this.f.evtLector1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtLector2.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtLector2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtLector2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtEMoHC1.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtEMoHC1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtEMoHC2.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtEMoHC2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtEMoHC3.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC3.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtEMoHC3.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtEMoHC4.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC4.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtEMoHC5.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC5.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtEMoHC6.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC6.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtEMoHC7.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtEMoHC7.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtGifts.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtGifts.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtGifts.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtGiftsChild.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtGiftsChild.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtServer1.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtServer1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtServer1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtServer2.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtServer2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtServer2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtServer3.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtServer3.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtUsher1.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtUsher1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtUsher1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtUsher2.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtUsher2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtUsher2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
     }
 
-    if(this.f.evtUsher3.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtUsher3.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtUsher4.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtUsher4.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtUsher5.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtUsher5.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtMassCord.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtMassCord.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtRosary1.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtRosary1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtRosary2.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtRosary2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtTech1.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtTech1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.f.evtTech2.value !== '') {
-      this.eventFull = this.eventFull + 4;
+    if(this.f.evtTech2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
     }
 
-    if(this.eventFull === 100) {
-      console.log('Event is Full');
+    if(this.prBarCounter >= 100) {
+      this.prBarCounter = 100;
+      this.eventFull = true;
+      console.log(this.prBarCounter);
     }
   }
 

@@ -8,8 +8,7 @@ import { EventsService } from './../../services/events.service';
 import { Event } from '../../models/Event';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import { VolunteersService } from './../../services/volunteers.service';
 
 @Component({
   selector: 'app-edit-event',
@@ -36,7 +35,7 @@ export class EditEventComponent implements OnInit {
 
   constructor(
     private eventsService: EventsService,
-    private afs: AngularFirestore,
+    private volunteersService: VolunteersService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -84,61 +83,17 @@ export class EditEventComponent implements OnInit {
         tap(event => this.eventEditForm.patchValue(event))
     );
 
-    this.onlyCantors = this.afs
-      .collection('volunteers', ref => ref
-      .where('isCantor', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyLectors = this.afs
-      .collection('volunteers', ref => ref.where('isLector', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyEMoHCs = this.afs
-      .collection('volunteers', ref => ref.where('isEMoHC', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyGifts = this.afs
-      .collection('volunteers', ref => ref.where('isGifts', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyGiftsChildren = this.afs
-      .collection('volunteers', ref => ref.where('isGiftsChild', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyTechs = this.afs
-      .collection('volunteers', ref => ref.where('isTech', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyRosarys = this.afs
-      .collection('volunteers', ref => ref.where('isRosary', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyUshers = this.afs
-      .collection('volunteers', ref => ref.where('isUsher', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-    
-    this.onlyOthers = this.afs
-      .collection('volunteers', ref => ref.where('isOther', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-    this.onlyServers = this.afs
-      .collection('volunteers', ref => ref.where('isServer', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
-
-      this.onlyMassCords = this.afs
-      .collection('volunteers', ref => ref.where('isMassCord', '==', true)
-      .where('isAvailable', '==', true))
-      .valueChanges();
+    this.onlyCantors = this.volunteersService.getCantors();
+    this.onlyLectors = this.volunteersService.getLectors();
+    this.onlyServers = this.volunteersService.getServers();
+    this.onlyUshers = this.volunteersService.getUshers();
+    this.onlyGifts = this.volunteersService.getGifts();
+    this.onlyGiftsChildren = this.volunteersService.getGiftsChildren();
+    this.onlyRosarys = this.volunteersService.getRosarys();
+    this.onlyOthers = this.volunteersService.getOthers();
+    this.onlyTechs = this.volunteersService.getTechs();
+    this.onlyEMoHCs = this.volunteersService.getEMoHCs();
+    this.onlyMassCords = this.volunteersService.getMassCords();
 
   }
 
