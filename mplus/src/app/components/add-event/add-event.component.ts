@@ -6,9 +6,12 @@ import { Observable } from 'rxjs';
 import { Event } from '../../models/Event';
 import { EventsService } from '../../services/events.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 import { VolunteersService } from '../../services/volunteers.service';
 // import { ValidateEvent } from '../../common/validators/event-item-required';
+
+import { IncompleteEventComponent } from './../dialogs/incomplete-event/incomplete-event.component';
 
 @Component({
   selector: 'app-add-event',
@@ -20,6 +23,7 @@ export class AddEventComponent implements OnInit {
   eventForm: FormGroup;
   prBarCounter: number = 0;
   eventFull: boolean = false;
+  incompleteEventApproval: boolean = false;
 
   onlyCantors: Observable<any>;
   onlyLectors: Observable<any>;
@@ -38,7 +42,8 @@ export class AddEventComponent implements OnInit {
     private volunteersService: VolunteersService,
     private router: Router,
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
     ) {
 
       this.eventForm = this.fb.group({
@@ -57,7 +62,7 @@ export class AddEventComponent implements OnInit {
         evtGiftsChild: ['', Validators.required],
         evtLector1: ['', Validators.required],
         evtLector2: ['', Validators.required],
-        evtOther: ['', Validators.required],
+        evtOther: ['',],
         evtRosary1: ['', Validators.required],
         evtRosary2: ['', Validators.required],
         evtServer1: ['', Validators.required],
@@ -90,16 +95,6 @@ export class AddEventComponent implements OnInit {
 
   get f() {return this.eventForm.controls;}
 
-  // checkStaffingLevel() {
-  //   if(this.f.evtType.value === 'Saturday') {
-  //     this.saturdayOrSundayLateStaffing();
-  //   } else if(this.f.evtType.value === 'Sunday - Early') {
-  //     this.saturdayOrSundayLateStaffing();
-  //   } else {
-  //     this.saturdayOrSundayLateStaffing();
-  //   }
-  // }
-
   checkStaffingLevel() {
     this.prBarCounter = 0;
     if(this.f.evtCantor.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
@@ -110,7 +105,6 @@ export class AddEventComponent implements OnInit {
 
     if(this.f.evtLector1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
       this.prBarCounter = this.prBarCounter + 4;
-      console.log('1st Clg', this.f.evtLector1.value);
     } else if (this.f.evtLector1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
       this.prBarCounter = this.prBarCounter + 9.1;
     }
@@ -228,14 +222,36 @@ export class AddEventComponent implements OnInit {
     if(this.prBarCounter >= 100) {
       this.prBarCounter = 100;
       this.eventFull = true;
-      console.log(this.prBarCounter);
-    }
+      this.eventForm.controls['evtIsFull'].patchValue(true);
+    }  
   }
 
   onSubmit({value}: {value: Event}) {
-    this.eventsService.addEvent(value);
-    this.openSnackBar('Event Added!', 'Awesome!')
-    this.router.navigate(['/events']);
+    this.checkStaffingLevel();
+
+    if(this.prBarCounter < 100 && !this.incompleteEventApproval) {
+      this.eventFull = false;
+      this.eventForm.controls['evtIsFull'].patchValue(false);
+      console.log(this.incompleteEventApproval);
+      
+      const dialogRef = this.dialog.open(IncompleteEventComponent, {
+        width: '350px'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if(!result) {
+          dialogRef.close();
+          return;
+        }
+      });
+      return;
+    } else {
+      this.eventFull = false;
+      this.eventForm.controls['evtIsFull'].patchValue(false);
+    }
+      this.eventsService.addEvent(value);
+      this.openSnackBar('Event Added!', 'Awesome!')
+      this.router.navigate(['/events']);
   }
 
   openSnackBar(message: string, action: string) {
@@ -243,4 +259,4 @@ export class AddEventComponent implements OnInit {
       duration: 2000
     });
   }
-}
+  }

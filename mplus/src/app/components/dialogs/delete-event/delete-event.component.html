@@ -4,7 +4,19 @@
   <p>{{ data.date.toDate() | date }}</p>
   <p>Are you sure you want to delete this event?</p>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
-  <button mat-button [matDialogClose]=true (click)="onDeleteClick()">Ok</button>
+<div mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="onNoClick()"
+    cdkFocusInitial>
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    [matDialogClose]=true
+    (click)="onDeleteClick()">
+    Ok
+  </button>
 </div>

@@ -7,8 +7,10 @@ import { tap } from 'rxjs/operators';
 import { EventsService } from './../../services/events.service';
 import { Event } from '../../models/Event';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 import { VolunteersService } from './../../services/volunteers.service';
+import { IncompleteEventComponent } from '../dialogs/incomplete-event/incomplete-event.component';
 
 @Component({
   selector: 'app-edit-event',
@@ -20,6 +22,9 @@ export class EditEventComponent implements OnInit {
   eventEditForm: FormGroup;
   event: Observable<Event>;
   id: string;
+  prBarCounter: number = 0;
+  eventFull: boolean = false;
+  incompleteEventApproval: boolean = false;
 
   onlyCantors: Observable<any>;
   onlyLectors: Observable<any>;
@@ -39,8 +44,14 @@ export class EditEventComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
+  }
+
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+
     this.eventEditForm = this.fb.group({
       id: '',
       evtType: ['', Validators.required],
@@ -73,10 +84,6 @@ export class EditEventComponent implements OnInit {
       evtUsher5: ['', Validators.required],
       evtMassCord: ['', Validators.required]
     });
-  }
-
-  ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
 
     this.event = this.eventsService.getEvent(this.id)
       .pipe(
@@ -99,7 +106,160 @@ export class EditEventComponent implements OnInit {
 
   get f() {return this.eventEditForm.controls;}
 
+  checkStaffingLevel() {
+    this.prBarCounter = 0;
+    if(this.f.evtCantor.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtCantor.value !== '' && this.f.evtType.value === 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtLector1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtLector1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtLector2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtLector2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtEMoHC1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtEMoHC1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtEMoHC2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtEMoHC2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtEMoHC3.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtEMoHC3.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtEMoHC4.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtEMoHC5.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtEMoHC6.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtEMoHC7.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtGifts.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtGifts.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtGiftsChild.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtServer1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtServer1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtServer2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtServer2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtServer3.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtUsher1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtUsher1.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtUsher2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    } else if (this.f.evtUsher2.value !== '' && this.f.evtType.value === 'Sunday - Early'){
+      this.prBarCounter = this.prBarCounter + 9.1;
+    }
+
+    if(this.f.evtUsher3.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtUsher4.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtUsher5.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtMassCord.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtRosary1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtRosary2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtTech1.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.f.evtTech2.value !== '' && this.f.evtType.value !== 'Sunday - Early') {
+      this.prBarCounter = this.prBarCounter + 4;
+    }
+
+    if(this.prBarCounter >= 100) {
+      this.prBarCounter = 100;
+      this.eventFull = true;
+      this.eventEditForm.controls['evtIsFull'].patchValue(true);
+    } 
+  }
+
   onSubmit({value}: {value: Event}) {
+    this.checkStaffingLevel();
+
+    if(this.prBarCounter < 100 && !this.incompleteEventApproval) {
+      this.eventFull = false;
+      this.eventEditForm.controls['evtIsFull'].patchValue(false);
+      console.log(this.incompleteEventApproval);
+      
+      const dialogRef = this.dialog.open(IncompleteEventComponent, {
+        width: '350px'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if(!result) {
+          dialogRef.close();
+          return;
+        }
+      });
+      return;
+    } else {
+      this.eventFull = false;
+      this.eventEditForm.controls['evtIsFull'].patchValue(false);
+    }
     this.eventsService.updateEvent(value);
     this.openSnackBar('Event Updated!', 'Cool')
     this.router.navigate(['/events']);

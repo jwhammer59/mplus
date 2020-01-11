@@ -41,8 +41,12 @@
                     </mat-form-field>
                   </td>
                   <td>
-                    <h5>{{ event.id }}</h5>
-                    <mat-checkbox formControlName="evtIsFull">Is Full</mat-checkbox>
+                    <div fxLayout="column" fxLayoutAlign="center center" class="progress-bar-container">
+                      <p><span><h4>Event Staffing %</h4></span></p>
+                      <p>{{ prBarCounter | roundNum }}% Complete</p>
+                      <mat-progress-bar mode="determinate" [value]="prBarCounter"></mat-progress-bar>
+                      <mat-checkbox [checked]="eventFull" [disabled]="true" formControlName="evtIsFull">Is Full</mat-checkbox>
+                    </div>
                   </td>
                 </tr>
               </table>
@@ -604,9 +608,20 @@
           type="button"
           [routerLink]="['/events']"
           mat-raised-button
-          color="accent">
+          color="warn">
           Cancel
         </button>
+        <button
+            type="button"
+            mat-raised-button
+            (click)="checkStaffingLevel()"
+            color="accent">
+            Check Staffing
+          </button>
+          <mat-checkbox
+            [(ngModel)]="incompleteEventApproval"
+            [ngModelOptions]="{standalone: true}">Accept Event Not Full
+          </mat-checkbox>
     </div>
    </mat-card-actions>
       

@@ -34,6 +34,7 @@ import { DeleteEventComponent } from './components/dialogs/delete-event/delete-e
 import { DeleteVolunteerComponent } from './components/dialogs/delete-volunteer/delete-volunteer.component';
 import { VolunteerDetailComponent } from './components/volunteer-detail/volunteer-detail.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
+import { IncompleteEventComponent } from './components/dialogs/incomplete-event/incomplete-event.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
     EventDetailComponent,
     VolunteerDetailComponent,
     CustomPhonePipe,
-    RoundNumberPipe
+    RoundNumberPipe,
+    IncompleteEventComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,10 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteVolunteerComponent, DeleteEventComponent]
+  entryComponents: [
+    DeleteVolunteerComponent,
+    DeleteEventComponent,
+    IncompleteEventComponent
+  ]
 })
 export class AppModule { }

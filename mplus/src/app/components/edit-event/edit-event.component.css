@@ -18,6 +18,10 @@ mat-card {
   width: 95%;
 }
 
-.pr-bar {
-  width: 150px;
+.progress-bar-container {
+  padding-bottom: 1rem;
+}
+
+p, h4 {
+  margin: .25rem;
 }

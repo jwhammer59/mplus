@@ -612,6 +612,10 @@
             color="accent">
             Check Staffing
           </button>
+          <mat-checkbox
+            [(ngModel)]="incompleteEventApproval"
+            [ngModelOptions]="{standalone: true}">Accept Event Not Full
+          </mat-checkbox>
       </div>
       </mat-card-actions>
     </mat-card>
