@@ -1,3 +1,4 @@
+<div class="main">
 <div class="grid-container">
     <div><h1 class="mat-h1">Dashboard</h1></div>
     <div class="dashboard-items">
@@ -5,9 +6,9 @@
       <div><h3 class="mat-h1">Events</h3></div>
     <div>
       <button
-        mat-stroked-button
-        [routerLink]="['/add-event']"
-        color="primary">
+        mat-raised-button
+        matRipple
+        [routerLink]="['/add-event']">
         Add Event
       </button>
     </div>
@@ -19,13 +20,14 @@
     <div><h3 class="mat-h1">Volunteers</h3></div>
     <div>
       <button
-        mat-stroked-button
-        [routerLink]="['/add-volunteer']"
-        color="primary">
+        mat-raised-button
+        matRipple
+        [routerLink]="['/add-volunteer']">
         Add Volunteer
       </button>
     </div>
   </div>
       <app-vol-table></app-vol-table>
   </div>
+</div>
 </div>

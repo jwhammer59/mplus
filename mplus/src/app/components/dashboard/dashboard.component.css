@@ -1,3 +1,7 @@
+.main {
+  height: 100vh;
+}
+
 .grid-container {
   margin: 20px;
 }

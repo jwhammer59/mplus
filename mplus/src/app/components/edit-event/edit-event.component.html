@@ -20,6 +20,7 @@
                       <input
                         matInput
                         formControlName="evtDate"
+                        [matDatepickerFilter]="weekendOnlyFilter"
                         [matDatepicker]="picker"
                         placeholder="Choose a date">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

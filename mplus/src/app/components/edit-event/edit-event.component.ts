@@ -104,6 +104,12 @@ export class EditEventComponent implements OnInit {
 
   }
 
+  weekendOnlyFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 1 && day !== 2 && day !== 3 && day !== 4 && day !== 5;
+  }
+
   get f() {return this.eventEditForm.controls;}
 
   checkStaffingLevel() {
