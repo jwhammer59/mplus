@@ -2,13 +2,14 @@
 
 @include mat-core();
 
-$mtrakr-app-primary: mat-palette($mat-blue-grey);
+$mtrakr-app-primary: mat-palette($mat-indigo);
 $mtrakr-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $mtrakr-app-warn:    mat-palette($mat-red);
+$mtrakr-app-theme: mat-light-theme($mtrakr-app-primary, $mtrakr-app-accent, $mtrakr-app-warn);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$mtrakr-app-theme: mat-dark-theme($mtrakr-app-primary, $mtrakr-app-accent, $mtrakr-app-warn);
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
-@include angular-material-theme($mtrakr-app-theme);
+@include angular-material-theme($dark-theme);

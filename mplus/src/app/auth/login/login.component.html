@@ -1,0 +1,49 @@
+<div fxLayout fxLayoutAlign="center center">
+  <mat-card class="card-container">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout fxLayoutAlign="center center">
+        <h2>
+          Ministries Plus Login
+        </h2>
+        <mat-icon>lock_open</mat-icon>
+      </div>
+      <div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+          <div fxLayout="column" fxLayoutAlign="center center">
+
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Enter your email"
+                formControlName="email"
+                required>
+              <mat-error *ngIf="f.email.invalid">
+                {{getEmailErrorMessage()}}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Enter your password"
+                type="password"
+                formControlName="password">
+                <mat-error *ngIf="f.password.invalid">
+                  {{getPasswordErrorMessage()}}
+                </mat-error>
+            </mat-form-field>
+            <div>
+              <button
+                mat-raised-button
+                matRipple color="primary"
+                type="submit"
+                value="Submit">
+                Login
+                </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</div>

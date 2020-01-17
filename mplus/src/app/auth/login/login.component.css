@@ -1,0 +1,15 @@
+.card-container {
+  width: 40%;
+}
+
+mat-card {
+  margin-top: 2rem;
+}
+
+h2 {
+  padding-right: 2rem;
+}
+
+button {
+  margin-top: 2rem;
+}

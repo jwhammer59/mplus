@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { CustomPhonePipe } from './common/pipes/cust-phone-pipe';
 import { RoundNumberPipe } from './common/pipes/round-number-pipe';
@@ -35,6 +36,8 @@ import { DeleteVolunteerComponent } from './components/dialogs/delete-volunteer/
 import { VolunteerDetailComponent } from './components/volunteer-detail/volunteer-detail.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { IncompleteEventComponent } from './components/dialogs/incomplete-event/incomplete-event.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,9 @@ import { IncompleteEventComponent } from './components/dialogs/incomplete-event/
     VolunteerDetailComponent,
     CustomPhonePipe,
     RoundNumberPipe,
-    IncompleteEventComponent
+    IncompleteEventComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +75,7 @@ import { IncompleteEventComponent } from './components/dialogs/incomplete-event/
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     MaterialModule,
     FlexLayoutModule
   ],
