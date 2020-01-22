@@ -9,13 +9,14 @@
           <tr fxLayout fxLayoutAlign="space-between">
             <td>
               <mat-form-field fxFlexFill>
-                <mat-label>First Name</mat-label>
                 <input
                 matInput
                 type="text"
                 placeholder="First Name"
-                formControlName="firstName">
+                formControlName="firstName"
+                required>
               </mat-form-field>
+              <mat-error *ngIf="f.firstName.touched && f.firstName.errors">Please enter first name.</mat-error>
             </td>
             <td>
               <mat-form-field fxFlexFill>
@@ -23,7 +24,9 @@
                 matInput
                 type="text"
                 placeholder="Last Name"
-                formControlName="lastName">
+                formControlName="lastName"
+                required>
+                <mat-error>Please enter last name.</mat-error>
               </mat-form-field>
             </td>
           </tr>
@@ -38,8 +41,9 @@
                 <input
                 matInput
                 type="email"
-                placeholder="email"
-                formControlName="email">
+                placeholder="Email"
+                formControlName="email"
+                required>
                 <mat-error
                   *ngIf="f.email.touched && f.email.errors">
                   Please enter valid email.
@@ -55,10 +59,11 @@
                 #phone
                 type="string"
                 placeholder="Phone - ex: 1112223333"
-                formControlName="phone">
+                formControlName="phone"
+                maxlength="10"
+                required>
                 <mat-hint align="end">{{ phone.value?.length || 0}}/10</mat-hint>
-                <mat-error
-                  *ngIf="f.phone.touched && f.phone.errors">
+                <mat-error>
                   Please enter 10 numbers only!
                 </mat-error>
               </mat-form-field>
@@ -77,7 +82,8 @@
                 matInput
                 type="text"
                 placeholder="Street"
-                formControlName="street">
+                formControlName="street"
+                required>
               </mat-form-field>
             </td>
           </tr>
@@ -93,7 +99,8 @@
                 matInput
                 type="text"
                 placeholder="City"
-                formControlName="city">
+                formControlName="city"
+                required>
               </mat-form-field>
             </td>
             <td>
@@ -101,7 +108,8 @@
                 <mat-label>State</mat-label>
                 <mat-select
                   matInput
-                  formControlName="state">
+                  formControlName="state"
+                  required>
                   <mat-option value="OH">OH</mat-option>
                   <mat-option value="MI">MI</mat-option>
                   <mat-option value="IN">IN</mat-option>
@@ -115,9 +123,13 @@
               <mat-form-field fxFlexFill>
                 <input
                 matInput
+                #zipcode
                 type="text"
                 placeholder="Zipcode"
-                formControlName="zipcode">
+                formControlName="zipcode"
+                maxlength="5"
+                required>
+                <mat-hint align="end">{{ zipcode.value?.length || 0}}/5</mat-hint>
               </mat-form-field>
             </td>
           </tr>
